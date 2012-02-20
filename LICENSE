@@ -1,0 +1,35 @@
+Copyright 2012 Neil E. Pearson
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+HxDoc Viewer uses various open-source components made available under the MIT,
+GPL, BSD, Apache and Mozilla licenses. Please review the licenses of products
+in the viewer/src/js/libraries directory.
+
+The HxDoc Viewer's build script embeds some of these products in its output, and
+alters them by way of minification and/or partial exclusion, depending on
+configuration. The build script may also download third-party components to
+assist the build process. Those components are licensed under various open
+source licenses, and remain Copyright their respective authors.
+
+All HxDoc source code is available at
+
+    https://github.com/hx/doc
+
+If you believe this product violates your intellectual property rights, or the
+rights of others, please contact the repository administrators, or write to
+
+    Neil E. Pearson
+    PO Box 246
+    St Leonards NSW 1590
+    Australia

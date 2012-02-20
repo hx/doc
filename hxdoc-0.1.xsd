@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://hxdoc.org/schemas/hxdoc-0.1.xsd" elementFormDefault="qualified"
+    xmlns:hx="http://hxdoc.org/schemas/hxdoc-0.1.xsd">
+    <xs:element name="package">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="hx:nonEmptyString"/>
+                <xs:element name="version" type="hx:nonEmptyString"/>
+                <xs:element name="author" minOccurs="0" type="hx:nonEmptyString"/>
+                <xs:element name="copyright" minOccurs="0" type="hx:nonEmptyString"/>
+                <xs:element minOccurs="0" name="license" type="hx:nonEmptyString"/>
+                <xs:element name="websites" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="website">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="name" type="hx:nonEmptyString"> </xs:element>
+                                        <xs:element name="url" type="hx:webUrl"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                    <xs:unique name="uniquePackageUrls">
+                        <xs:selector xpath="hx:website"/>
+                        <xs:field xpath="hx:name"/>
+                    </xs:unique>
+                </xs:element>
+                <xs:element name="language" type="hx:languageName"/>
+                <xs:group ref="hx:summaryAndDetails"/>
+                <xs:group ref="hx:members"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="languageName">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BASH"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="CSharp"/>
+            <xs:enumeration value="JavaScript"/>
+            <xs:enumeration value="JSON"/>
+            <xs:enumeration value="Perl"/>
+            <xs:enumeration value="PHP"/>
+            <xs:enumeration value="Python"/>
+            <xs:enumeration value="SQL"/>
+            <xs:enumeration value="XML"/>
+            <xs:enumeration value="VisualBasic"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nonEmptyString">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="identifier">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\S+"/>
+            <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="webUrl">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="https?://.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="accessLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="public"/>
+            <xs:enumeration value="private"/>
+            <xs:enumeration value="protected"/>
+            <xs:enumeration value="internal"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="markUp">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element minOccurs="0" name="heading" type="hx:nonEmptyString"/>
+            <xs:choice>
+                <xs:element name="paragraph" type="hx:paragraph"/>
+                <xs:element name="list">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="unbounded">
+                            <xs:element name="item" type="hx:markUp"/>
+                        </xs:sequence>
+                        <xs:attribute name="type">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ordered"/>
+                                    <xs:enumeration value="unordered"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="code" type="hx:codeBlock"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="paragraph" mixed="true">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="strong" type="hx:nonEmptyString"/>
+            <xs:element name="code" type="hx:codeBlock"/>
+            <xs:group ref="hx:link"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="codeBlock">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="language" type="hx:languageName"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:group name="argumentsAndExceptions">
+        <xs:sequence>
+            <xs:element name="arguments" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="argument" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:element name="optional" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:group ref="hx:variableProperties"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueArguments">
+                    <xs:selector xpath="hx:argument"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="exceptions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="exception">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:group ref="hx:type"/>
+                                    <xs:group ref="hx:summaryAndDetails"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="members">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="constants">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="constant" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:group ref="hx:variableProperties"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueConstantNames">
+                    <xs:selector xpath="hx:constant"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="variables">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="variable" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:group ref="hx:variableProperties"/>
+                                    <xs:group ref="hx:members"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueVariableNames">
+                    <xs:selector xpath="hx:variable"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="methods">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="method" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:element minOccurs="0" name="access" type="hx:accessLevel"/>
+                                    <xs:choice>
+                                        <xs:element maxOccurs="unbounded" name="overload">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:group ref="hx:summaryAndDetails"/>
+                                                  <xs:group ref="hx:argumentsAndExceptions"/>
+                                                  <xs:element name="returns" minOccurs="0">
+                                                  <xs:complexType>
+                                                  <xs:sequence>
+                                                  <xs:group ref="hx:typeSet"/>
+                                                  <xs:group ref="hx:summaryAndDetails"/>
+                                                  </xs:sequence>
+                                                  </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:group ref="hx:remarksAndExample"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:group ref="hx:link"/>
+                                    </xs:choice>
+                                    <xs:group ref="hx:members"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                            <xs:unique name="uniqueOverrideSummaries">
+                                <xs:selector xpath="hx:overload"/>
+                                <xs:field xpath="hx:summary"/>
+                            </xs:unique>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueMethodNames">
+                    <xs:selector xpath="hx:method"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="events">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="event">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:element minOccurs="0" name="access" type="hx:accessLevel"/>
+                                    <xs:group minOccurs="0" ref="hx:typeSet"/>
+                                    <xs:group ref="hx:summaryAndDetails"/>
+                                    <xs:element minOccurs="0" name="arguments">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element maxOccurs="unbounded" name="argument">
+                                                  <xs:complexType>
+                                                  <xs:sequence>
+                                                  <xs:element name="name" type="hx:identifier"/>
+                                                  <xs:group ref="hx:variableProperties"/>
+                                                  </xs:sequence>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:group ref="hx:remarksAndExample"/>
+                                    <xs:group ref="hx:members"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueEventNames">
+                    <xs:selector xpath="hx:event"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="classes">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="class" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:element minOccurs="0" name="base">
+                                        <xs:complexType>
+                                            <xs:group ref="hx:type"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element minOccurs="0" name="access" type="hx:accessLevel"/>
+                                    <xs:group ref="hx:summaryAndDetails"/>
+                                    <xs:element minOccurs="0" name="constructor">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element maxOccurs="unbounded" name="overload">
+                                                  <xs:complexType>
+                                                  <xs:sequence>
+                                                  <xs:group ref="hx:summaryAndDetails"/>
+                                                  <xs:group ref="hx:argumentsAndExceptions"/>
+                                                  <xs:group ref="hx:remarksAndExample"/>
+                                                  </xs:sequence>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element minOccurs="0" name="static">
+                                        <xs:complexType>
+                                            <xs:group ref="hx:members"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element minOccurs="0" name="instance">
+                                        <xs:complexType>
+                                            <xs:group ref="hx:members"/>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:group ref="hx:remarksAndExample"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueClassNames">
+                    <xs:selector xpath="hx:class"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element minOccurs="0" name="namespaces">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="namespace" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="name" type="hx:identifier"/>
+                                    <xs:group ref="hx:summaryAndDetails"/>
+                                    <xs:group ref="hx:members"/>
+                                    <xs:group ref="hx:remarksAndExample"/>
+                                </xs:sequence>
+                                <xs:attributeGroup ref="hx:id"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+                <xs:unique name="uniqueNamespaceNames">
+                    <xs:selector xpath="hx:namespace"/>
+                    <xs:field xpath="hx:name"/>
+                </xs:unique>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="summaryAndDetails">
+        <xs:sequence>
+            <xs:element name="summary" type="hx:nonEmptyString"/>
+            <xs:element name="details" type="hx:markUp" minOccurs="0"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="variableProperties">
+        <xs:sequence>
+            <xs:group ref="hx:typeSet"/>
+            <xs:group ref="hx:summaryAndDetails"/>
+            <xs:group ref="hx:remarksAndExample"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="remarksAndExample">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="remarks" type="hx:markUp"/>
+            <xs:element minOccurs="0" name="example" type="hx:markUp"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="typeSet">
+        <xs:sequence>
+            <xs:element name="types">
+                <xs:complexType>
+                    <xs:group maxOccurs="unbounded" ref="hx:type"/>
+                </xs:complexType>
+                <xs:unique name="typeSetUniqueType">
+                    <xs:selector xpath="hx:type"/>
+                    <xs:field xpath="."/>
+                </xs:unique>
+                <xs:unique name="typeSetUniqueInternal">
+                    <xs:selector xpath="hx:link/hx:internal"/>
+                    <xs:field xpath="."/>
+                </xs:unique>
+                <xs:unique name="typeSetUniqueExternal">
+                    <xs:selector xpath="hx:link/hx:external"/>
+                    <xs:field xpath="."/>
+                    <xs:field xpath="@href"/>
+                </xs:unique>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:attributeGroup name="id">
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:attributeGroup>
+    <xs:group name="link">
+        <xs:sequence>
+            <xs:element name="link">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="internal" type="xs:IDREF"/>
+                        <xs:element name="external">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="hx:nonEmptyString">
+                                        <xs:attribute name="href" type="xs:anyURI"/>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="type">
+        <xs:choice>
+            <xs:element name="type" type="hx:identifier"/>
+            <xs:group ref="hx:link"/>
+        </xs:choice>
+    </xs:group>
+</xs:schema>

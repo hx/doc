@@ -1,0 +1,147 @@
+table {
+    width: 100%;
+    color: #282828;
+}
+
+th, td {
+    border-style: solid;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th {
+    border-width: 1px 1px 0;
+    color: #fff;
+    text-align: left;
+    font-size: 12px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+    background: #666;
+    border-color: #000;
+    line-height: 12px;
+    padding: 4px 7px;
+    border-right-color: rgba(0, 0, 0, .22);
+    border-left-color: rgba(255, 255, 255, .17);
+}
+
+thead th:first-child {
+    border-top-left-radius: 5px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 5px;
+}
+
+tbody th, tbody td {
+    border-width: 0 1px 1px 0;
+    padding: 7px;
+}
+
+tbody tr :first-child {
+    border-left-width: 1px;
+}
+
+tbody > :last-child > :first-child {
+    border-bottom-left-radius: 5px;
+}
+
+tbody > :last-child > :last-child {
+    border-bottom-right-radius: 5px;
+}
+
+tbody tr:hover > * {
+    background: #fff !important;
+}
+
+tbody td.required {
+    font-style: italic;
+    color: #3b707b;
+}
+
+tbody .optional td.required {
+    color: #8e9b9e;
+}
+
+.arguments tbody th {
+    color: #0175b6;
+}
+
+.arguments tbody .types li {
+    display: block;
+    color: #024a62;
+}
+
+.arguments tbody .types a {
+    color: #0645a2;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+tbody .parent:after {
+    content: ".";
+}
+
+/* link colours */
+
+.constants tbody th a {
+    color: #5e0014;
+}
+
+.variables tbody th a {
+    color: #773800;
+}
+
+.exceptions tbody th a,
+.classes tbody th a {
+    color: #063b72;
+}
+
+.exceptions tbody th {
+    color: #960202;
+}
+
+.classes td.base a,
+td.inheritedFrom a {
+    color: #4585b6;
+}
+
+.classes td.base {
+    color: #99aebe;
+}
+
+.methods tbody th a {
+    color: #034602;
+}
+
+.methods td.description a {
+    color: #468685;
+}
+
+.events tbody th a {
+    color: #390168;
+}
+
+.namespaces tbody th a {
+    color: #5b5a5a;
+}
+
+
+td.access {
+    color: #afafaf;
+    font-style: italic;
+}
+
+td.access.public {
+    color: #7c7c7c;
+}
+
+.arguments tbody .details {
+    padding-left: 0;
+    font-size: 13px;
+}
+
+.arguments tbody .details > :last-child {
+    margin-bottom: 0;
+}

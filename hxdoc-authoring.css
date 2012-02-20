@@ -1,0 +1,972 @@
+package {
+    font-size: 14px;
+    padding: 15px 30px;
+}
+
+package, name:after, code[language]:before {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    display: block;
+}
+
+paragraph * {
+    display: inline;
+}
+
+package > name,
+package > version,
+package > author:before,
+package > copyright {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 200;
+}
+
+summary {
+    font-family: "Book Antiqua", BookAntiqua, Georgia, serif;
+    color: #111;
+    font-size: 1.07em;
+}
+
+[id]:before,
+code,
+namespace name,
+method name,
+class name,
+argument name,
+variable name,
+constant name,
+exception type, exception link
+{
+    font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+package > name,
+package > version {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+package > name {
+    background-color: #275e89;
+    background: -moz-linear-gradient(top, #347cad 0, #255881 100%);
+    background: -webkit-linear-gradient(top, #347cad 0, #255881 100%);
+    color: #fff;
+    font-size: 1.8em;
+    padding: .4em 0 0 15px;
+    border-radius: 4px 4px 0 0;
+    line-height: 1.3em;
+}
+
+package > version {
+    background-color: #275e89;
+    background: -moz-linear-gradient(top, #255982 0, #1d456a 100%);
+    background: -webkit-linear-gradient(top, #255982 0, #1d456a 100%);
+    color: #c2ddf2;
+    padding: 0 0 .72em 15px;
+    border-radius: 0 0 4px 4px;
+    margin-top: -.2em;
+    margin-bottom: 2.5em;
+}
+
+package > version:before {
+    content: "Version "
+}
+
+package > author {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: #1d466b;
+    margin-bottom: .6em;
+}
+
+package > author:before {
+    content: "Written by ";
+}
+
+package > copyright {
+    color: #888;
+    font-size: .83em;
+    margin-bottom: 2.2em;
+}
+
+license {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 2em;
+}
+
+
+
+
+
+/* name/value pairs */
+
+websites {
+    padding-bottom: 2em;
+    border-bottom: 1px solid #bcccd9;
+    margin-bottom: 2em;
+}
+
+website {
+    line-height: 1.3em;
+    margin-bottom: .35em;
+}
+
+website > * {
+    display: inline-block;
+}
+
+website > name {
+    min-width: 7em;
+    margin-right: .5em;
+    color: #555;
+}
+
+website > name:after {
+    content: ": "
+}
+
+website > url {
+    color: #0468c3;
+}
+
+language, access, types, base, link {
+    color: #c35904;
+    margin-bottom: .8em;
+}
+
+language {
+    margin-bottom: 2em;
+}
+
+link {
+    margin-bottom: 0;
+}
+
+language:before, access:before, types:before, base:before, method > link:before {
+    color: #555;
+    width: 7.5em;
+    display: block;
+    float: left;
+    display: oxy_concat("inline-block");
+}
+
+language:before {
+    content: "Language: ";
+}
+
+access:before {
+    content: "Access Level: ";
+}
+
+types:before {
+    content: "Type: "
+}
+
+method > link:before {
+    content: "Alias Of: ";
+}
+
+type {
+    display: inline;
+}
+
+types > * + :before{
+    content: " or ";
+    color: #c3c3c3;
+}
+
+package > summary {
+    font-size: 1.2em;
+    color: #222;
+    line-height: 1.3em;
+    margin-bottom: 1.5em;
+}
+
+base:before {
+    content: "Base: ";
+}
+
+base > *, link, link * {
+    display: inline;
+}
+
+link, base {
+    color: #00f;
+}
+
+external:after {
+    content: " [" attr(href) "]";
+    color: #aaa;
+}
+
+internal:before {
+    content: '#';
+    color: #069;
+}
+
+
+
+/* rich text bodies */
+
+details, remarks {
+    border: 1px solid #e2e2e2;
+    background-color: #f4f4f4;
+    padding: .5em .6em .2em;
+    border-radius: 4px;
+    color: #555;
+    margin-top: 1em;
+}
+
+remarks {
+    background-color: #fffef5;
+    border-color: #efecd0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+code {
+    background-color: #475766;
+    color: #fff;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    white-space: pre;
+    overflow: auto;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: .4em .6em .3em;
+    margin-bottom: .5em;
+}
+
+code[language]:before {
+    background-color: #fff;
+    color: #475766;
+    content: attr(language);
+    display: block;
+    font-size: .85em;
+    text-align: right;
+    display: block;
+    float: right;
+    line-height: 1em;
+    padding: 2px 5px;
+    border-radius: 1em;
+    margin-right: -4px;
+}
+
+paragraph > code {
+    overflow: visible;
+    background-color: #fff;
+    border-color: #d7d7d7;
+    padding: 2px 4px 1px;
+    color: #586b7c;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+item {
+    display: list-item;
+    list-style: disc;
+    margin-left: 3em;
+    
+}
+
+list[type=ordered] item {
+    list-style: decimal;
+}
+
+heading {
+    font-weight: bold;
+    color: #385a79;
+}
+
+heading, paragraph {
+    margin-bottom: .5em;
+}
+
+
+
+
+
+
+/* sections */
+
+returns, example, instance, static, constructor {
+    border-top: 1px solid #c6c6c6;
+    margin-top: 2em;
+}
+
+returns, example, constructor {
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+constructor:before,
+returns:before, example:before,
+instance:before, static:before {
+    display: inline-block;
+    font-size: 1.15em;
+    font-family: Georgia, "Book Antiqua", "Times New Roman", serif;
+    position: relative;
+    top: -10px;
+    line-height: 1em;
+    background-color: #fff;
+    padding-right: 10px;
+    color: #444;
+    padding-bottom: oxy_concat("1em");
+}
+
+constructor:before, returns:before, example:before {
+    left: -20px;
+    top: -15px;
+}
+
+returns:before {
+    content: "Return Value";
+}
+
+example:before {
+    content: "Example";
+}
+
+instance:before {
+    content: "Instance Members";
+}
+
+static:before {
+    content: "Static Members";
+}
+
+constructor:before {
+    content: "Constructor";
+}
+
+
+
+/* blocks - common */
+
+namespaces, namespace,
+methods, method,
+arguments, argument,
+classes, class,
+variables, variable,
+constants, constant,
+events, event,
+exceptions, exception
+{
+    padding: 0 9px 9px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+namespaces:before, namespace > name,
+methods:before, method > name,
+arguments:before, argument > name,
+classes:before, class > name,
+variables:before, variable > name,
+constants:before, constant > name,
+events:before, event > name,
+exceptions:before, exception > type, exception > link
+{
+    display: block;
+    margin: 0 -9px;
+    padding: .4em .6em;
+    margin-top: oxy_concat("10px");
+}
+
+namespaces,
+methods,
+arguments,
+classes,
+variables,
+constants,
+events,
+exceptions
+{
+    margin-top: 10px;
+    margin-top: oxy_concat("0");
+}
+
+namespaces:before,
+methods:before,
+arguments:before,
+classes:before,
+variables:before,
+constants:before,
+events:before,
+exceptions:before
+{
+    text-shadow: 0 1px 0 #fff;
+}
+
+namespace,
+method,
+argument,
+class,
+variable,
+constant,
+event,
+exception
+{
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+namespace > name,
+method > name,
+argument > name,
+class > name,
+variable > name,
+constant > name,
+event > name,
+exception > type, exception > link
+{
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    margin: -1px -10px 9px;    
+}
+
+[id] {
+    position: relative;
+    margin-top: oxy_concat("0");
+}
+[id]:before {
+    content: " #" attr(id);
+    display: block;
+    position: absolute;
+    top: -10px;
+    font-size: .8em;
+    margin-left: -10px;
+    opacity:.33;
+    line-height: 1em;
+    color: oxy_concat('#888');
+}
+
+namespace > name:after,
+method > name:after,
+argument > name:after,
+constant > name:after,
+variable > name:after,
+class > name:after,
+event > name:after,
+exception > type:after, exception > link:after
+{
+    float: right;
+    padding-left: oxy_concat(".5em");
+}
+
+
+
+
+
+/* namespaces */
+
+namespaces {
+    background-color: #e3e3e3;
+}
+
+namespaces:before {
+    content: "Namespaces";
+    background-color: #ccc;
+    background: -moz-linear-gradient(top, #e5e5e5 0, #bfbfbf 100%);
+    background: -webkit-linear-gradient(top, #e5e5e5 0, #bfbfbf 100%);
+    color: #505050;
+}
+
+namespace > namespaces:before {
+    content: "Sub-namespaces"
+}
+
+namespace > name {
+    background-color: #5c5c5c;
+    background: -moz-linear-gradient(top, #757575 0, #4c4c4c 100%);
+    background: -webkit-linear-gradient(top, #757575 0, #4c4c4c 100%);
+    border-color: #4c4c4c;
+}
+
+namespace > name:after {
+    content: "namespace";
+    color: #b2b2b2;
+}
+
+namespaces, namespace {
+    border-color: #ccc;
+}
+
+instance > namespaces:before {
+    content: "Instance Namespaces";
+}
+
+static > namespaces:before {
+    content: "Static Namespaces";
+}
+
+instance > namespaces > namespace > name:after {
+    content: "instance namespace";
+}
+
+static > namespaces > namespace > name:after {
+    content: "static namespace";
+}
+
+
+
+
+
+
+
+/* events */
+
+events {
+    background-color: #f0e9fd;
+}
+
+events:before {
+    content: "Raises Events";
+    background-color: #cfb2fa;
+    background: -moz-linear-gradient(top, #e4d4fc 0, #cfb2fa 100%);
+    background: -webkit-linear-gradient(top, #e4d4fc 0, #cfb2fa 100%);
+    color: #03038e;
+}
+
+event > events:before {
+    content: "Sub-events"
+}
+
+event > name {
+    background-color: #5804cb;
+    background: -moz-linear-gradient(top, #8706db 0, #5804cb 100%);
+    background: -webkit-linear-gradient(top, #8706db 0, #5804cb 100%);
+    border-color: #4f0aaf;
+}
+
+event > name:after {
+    content: "event";
+    color: #d1acfa;
+}
+
+events, event {
+    border-color: #b2a0f7;
+}
+
+instance > events:before {
+    content: "Raises Instance Events";
+}
+
+static > events:before {
+    content: "Raises Static Events";
+}
+
+instance > events > event > name:after {
+    content: "instance event";
+}
+
+static > events > event > name:after {
+    content: "static event";
+}
+
+
+
+
+
+
+
+/* methods */
+
+methods {
+    background-color: #e5f9e1;
+}
+
+methods:before {
+    content: "Methods";
+    background-color: #b6e4ae;
+    background: -moz-linear-gradient(top, #e2f4df 0, #b6e4ae 100%);
+    background: -webkit-linear-gradient(top, #e2f4df 0, #b6e4ae 100%);
+    color: #105203;
+}
+
+method > methods:before {
+    content: "Sub-methods"
+}
+
+method > name {
+    background-color: #198c02;
+    background: -moz-linear-gradient(top, #3eb027 0, #198c02 100%);
+    background: -webkit-linear-gradient(top, #3eb027 0, #198c02 100%);
+    border-color: #177207;
+}
+
+method > name:after {
+    content: "method";
+    color: #bedeb8;
+}
+
+methods, method {
+    border-color: #9acb90;
+}
+
+instance > methods:before {
+    content: "Instance Methods";
+}
+
+instance > methods > method > name:after {
+    content: "instance method";
+}
+
+overload + overload {
+    border-top: 2px dashed #bac7dc;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+method > overload + overload {
+    border-color: #9acb90;
+}
+
+
+
+
+
+
+
+/* static methods */
+
+static > methods {
+    background-color: #edf4eb;
+}
+
+static > methods:before {
+    content: "Static Methods";
+    background-color: #deedc5;
+    background: -moz-linear-gradient(top, #f2f8e8 0, #deedc5 100%);
+    background: -webkit-linear-gradient(top, #f2f8e8 0, #deedc5 100%);
+    color: #526b26;
+}
+
+static > methods > method > name {
+    background-color: #728d1f;
+    background: -moz-linear-gradient(top, #95b143 0, #728d1f 100%);
+    background: -webkit-linear-gradient(top, #95b143 0, #728d1f 100%);
+    border-color: #4c8304;
+}
+
+static > methods > method > name:after {
+    content: "static method";
+    color: #d6deb8;
+}
+
+static > methods, static > methods > method {
+    border-color: #bfcabd;
+}
+
+
+
+
+
+
+
+
+/* arguments */
+
+arguments {
+    background-color: #e7fafc;
+}
+
+arguments:before {
+    content: "Arguments";
+    background-color: #b9e7eb;
+    background: -moz-linear-gradient(top, #e4f5f7 0, #b9e7eb 100%);
+    background: -webkit-linear-gradient(top, #e4f5f7 0, #b9e7eb 100%);
+    color: #046172;
+}
+
+argument > name {
+    background-color: #02879f;
+    background: -moz-linear-gradient(top, #27abc3 0, #02879f 100%);
+    background: -webkit-linear-gradient(top, #27abc3 0, #02879f 100%);
+    border-color: #088399;
+}
+
+argument > name:after {
+    content: "argument";
+    color: #afdee6;
+}
+
+arguments, argument {
+    border-color: #add7df;
+}
+
+
+
+
+
+
+
+/* exceptions */
+
+exceptions {
+    background-color: #ffe4e4;
+}
+
+exceptions:before {
+    content: "Throws";
+    background-color: #fec3c3;
+    background: -moz-linear-gradient(top, #fed5d5 0, #feb3b3 100%);
+    background: -webkit-linear-gradient(top, #fed5d5 0, #feb3b3 100%);
+    color: #900202;
+}
+
+exception > type, exception > link {
+    background-color: #970000;
+    background: -moz-linear-gradient(top, #ba0000 0, #7b0c00 100%);
+    background: -webkit-linear-gradient(top, #ba0000 0, #7b0c00 100%);
+    border-color: #7f1004;
+}
+
+exception > type:after, exception > link:after {
+    content: "exception";
+    color: #fd8f8f;
+}
+
+exceptions, exception {
+    border-color: #f9908e;
+}
+
+exception > link > :before,
+exception > link > :after
+{
+    color: #fcc;
+}
+
+
+
+
+
+
+
+
+/* classes */
+
+classes {
+    background-color: #e4eaf3;
+}
+
+classes:before {
+    content: "Classes";
+    background-color: #b5bfd0;
+    background: -moz-linear-gradient(top, #dae5f5 0, #b5bfd0 100%);
+    background: -webkit-linear-gradient(top, #dae5f5 0, #b5bfd0 100%);
+    color: #15396e;
+}
+
+class > classes:before {
+    content: "Member Classes"
+}
+
+class > name {
+    background-color: #2d4469;
+    background: -moz-linear-gradient(top, #44679c 0, #2d4469 100%);
+    background: -webkit-linear-gradient(top, #44679c 0, #2d4469 100%);
+    border-color: #088399;
+}
+
+class > name:after {
+    content: "class";
+    color: #94add1;
+}
+
+classes, class {
+    border-color: #bac7db;
+}
+
+instance > classes:before {
+    content: "Instance Classes";
+}
+
+static > classes:before {
+    content: "Static Classes";
+}
+
+instance > classes > class > name:after {
+    content: "instance class";
+}
+
+static > classes > class > name:after {
+    content: "static class";
+}
+
+
+
+
+
+
+
+
+
+/* constants */
+
+constants {
+    background-color: #fceeee;
+}
+
+constants:before {
+    content: "Constants";
+    background-color: #f9c3cf;
+    background: -moz-linear-gradient(top, #fbdee4 0, #f9c3cf 100%);
+    background: -webkit-linear-gradient(top, #fbdee4 0, #f9c3cf 100%);
+    color: #660213;
+}
+
+constant > constants:before {
+    content: "Sub-constants"
+}
+
+constant > name {
+    background-color: #930427;
+    background: -moz-linear-gradient(top, #c8084c 0, #930427 100%);
+    background: -webkit-linear-gradient(top, #c8084c 0, #930427 100%);
+    border-color: #7f1206;
+}
+
+constant > name:after {
+    content: "constant";
+    color: #f6778f;
+}
+
+constants, constant {
+    border-color: #f6bdbc;
+}
+
+instance > constants:before {
+    content: "Instance Constants";
+}
+
+static > constants:before {
+    content: "Static Constants";
+}
+
+instance > constants > constant > name:after {
+    content: "instance constant";
+}
+
+static > constants > constant > name:after {
+    content: "static constant";
+}
+
+
+
+
+
+
+/* variables */
+
+variables {
+    background-color: #fdf3e9;
+}
+
+variables:before {
+    content: "Variables";
+    background-color: #fadbb2;
+    background: -moz-linear-gradient(top, #fcebd4 0, #fadbb2 100%);
+    background: -webkit-linear-gradient(top, #fcebd4 0, #fadbb2 100%);
+    color: #8e4803;
+}
+
+variable > variables:before {
+    content: "Properties"
+}
+
+variable > name {
+    background-color: #d76b16;
+    background: -moz-linear-gradient(top, #e39e21 0, #d76b16 100%);
+    background: -webkit-linear-gradient(top, #e39e21 0, #d76b16 100%);
+    border-color: #b65d06;
+}
+
+variable > name:after {
+    content: "variable";
+    color: #f6cb8d;
+}
+
+variables, variable {
+    border-color: #f6cb8d;
+}
+
+instance > variables:before {
+    content: "Instance Variables";
+}
+
+instance > variables > variable > name:after {
+    content: "instance variable";
+}
+
+
+
+
+
+/* static variables */
+static > variables {
+    background-color: #f7f0e9;
+}
+
+static > variables:before {
+    content: "Static Variables";
+    background-color: #f3e6ae;
+    background: -moz-linear-gradient(top, #f9f1d2 0, #f3e6ae 100%);
+    background: -webkit-linear-gradient(top, #f9f1d2 0, #f3e6ae 100%);
+    color: #885e04;
+}
+
+static > variables > variable > name {
+    background-color: #d29d2c;
+    background: -moz-linear-gradient(top, #e0be45 0, #d29d2c 100%);
+    background: -webkit-linear-gradient(top, #e0be45 0, #d29d2c 100%);
+    border-color: #b48659;
+}
+
+static > variables > variable > name:after {
+    content: "static variable";
+    color: #efdc8e;
+}
+
+static > variables, static > variables > variable {
+    border-color: #e9cfa3;
+}
+
+
+
+
+
+
+/* misc */
+
+optional:after {
+    height: 1em;
+    content: "OPTIONAL";
+    float: right;
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+    border: 1px solid #000;
+    border-radius: 1em;
+    background-color: #555;
+    background: -moz-linear-gradient(top, #6e6f6f 0, #3d3e3e 100%);
+    background: -webkit-linear-gradient(top, #6e6f6f 0, #3d3e3e 100%);
+    display: inline-block;
+    padding: 5px 8px 2px;
+    margin: -3px;
+    font-size: .8em;
+    line-height: .8em;
+}
+
+optional {
+    text-align: right;
+}
+
+
+
+
+

@@ -1,0 +1,1975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://hxdoc.org/stylesheets/hxdoc-authoring.css"?>
+<package xmlns="http://hxdoc.org/schemas/hxdoc-0.1.xsd">
+    <name>Hx JavaScript Library</name>
+    <version>0.1</version>
+    <author>Neil E. Pearson</author>
+    <copyright>© 2011 Helium Studios</copyright>
+    <license>Licensed under the Apache License, Version 2.0</license>
+    <websites>
+        <website>
+            <name>Website</name>
+            <url>http://hx.net.au/js</url>
+        </website>
+        <website>
+            <name>Repository</name>
+            <url>https://github.com/hx/js</url>
+        </website>
+        <website>
+            <name>License</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </website>
+    </websites>
+    <language>JavaScript</language>
+    <summary>The Hx JavaScript Library is a collection of methods not found in most common
+        libraries, including methods for binary manipulation, colour transformation, CSS3
+        backfitting and more.</summary>
+    <details>
+        <paragraph>This document is <strong>very</strong> incomplete, as is meant only to
+            demonstrate the HxDoc format.</paragraph>
+    </details>
+    <namespaces>
+        <namespace>
+            <name>hx</name>
+            <summary>The Hx Library's global variable.</summary>
+            <details>
+                <paragraph>By default, you can access the Hx Libary's classes and methods from
+                    the <code>hx</code> global variable.</paragraph>
+            </details>
+            <classes>
+                <class>
+                    <name>Color</name>
+                    <base>
+                        <link>
+                            <internal>Colour</internal>
+                        </link>
+                    </base>
+                    <summary>Convenience class provided as an alias of the Colour class, for the
+                        benefit of our American brethren.</summary>
+                </class>
+                <class id="Colour">
+                    <name>Colour</name>
+                    <summary>Represents a colour, and provides means to parse and export various
+                        string representations, and manipulate hue, saturation, luminance and
+                        alpha.</summary>
+                    <constructor>
+                        <overload>
+                            <summary>Create a new colour with default values (black,
+                                opaque).</summary>
+                        </overload>
+                        <overload>
+                            <summary>Create a colour from a string representation.</summary>
+                            <arguments>
+                                <argument>
+                                    <name>colour</name>
+                                    <types>
+                                        <type>string</type>
+                                    </types>
+                                    <summary>A CSS-compatible string representing a
+                                        colour.</summary>
+                                    <details>
+                                        <paragraph>Can be any CSS compatible colour string,
+                                            including:</paragraph>
+                                        <list>
+                                            <item>
+                                                <paragraph>Hex: <code>#RRGGBB</code></paragraph>
+                                            </item>
+                                            <item>
+                                                <paragraph>Hex with alpha:
+                                                  <code>#AARRGGBB</code></paragraph>
+                                            </item>
+                                            <item>
+                                                <paragraph>Red, green, blue:
+                                                  <code>rgb(r, g, b)</code></paragraph>
+                                            </item>
+                                            <item>
+                                                <paragraph>Red, green, blue, alpha:
+                                                  <code>rgb(r, g, b, a)</code></paragraph>
+                                            </item>
+                                            <item>
+                                                <paragraph>Hue, saturation, luminance:
+                                                  <code>rgb(h, s, l)</code></paragraph>
+                                            </item>
+                                            <item>
+                                                <paragraph>Hue, saturation, luminance, alpha:
+                                                  <code>rgb(h, s, l, a)</code></paragraph>
+                                            </item>
+                                        </list>
+                                    </details>
+                                </argument>
+                            </arguments>
+                        </overload>
+                        <overload>
+                            <summary>Create a colour from discreet red, green and blue (byte)
+                                values, and an option alpha (float) value.</summary>
+                            <arguments>
+                                <argument>
+                                    <name>red</name>
+                                    <types>
+                                        <type>number</type>
+                                    </types>
+                                    <summary>A red value between 0 and 255.</summary>
+                                </argument>
+                                <argument>
+                                    <name>green</name>
+                                    <types>
+                                        <type>number</type>
+                                    </types>
+                                    <summary>A green value between 0 and 255.</summary>
+                                </argument>
+                                <argument>
+                                    <name>blue</name>
+                                    <types>
+                                        <type>number</type>
+                                    </types>
+                                    <summary>A blue value between 0 and 255.</summary>
+                                </argument>
+                                <argument>
+                                    <name>alpha</name>
+                                    <optional/>
+                                    <types>
+                                        <type>number</type>
+                                    </types>
+                                    <summary>An alpha value between 0 (transparent) and 1
+                                        (opaque).</summary>
+                                    <details>
+                                        <paragraph>If omitted, defaults to <code>1</code>
+                                            (opaque).</paragraph>
+                                    </details>
+                                </argument>
+                            </arguments>
+                        </overload>
+                    </constructor>
+                    <static>
+                        <classes>
+                            <class id="Gradient">
+                                <name>Gradient</name>
+                                <summary>Represents a linear, multi-stop gradient. Mostly useful for
+                                    generating CSS.</summary>
+                                <static>
+                                    <classes>
+                                        <class id="Stop">
+                                            <name>Stop</name>
+                                            <base>
+                                                <link>
+                                                  <internal>Colour</internal>
+                                                </link>
+                                            </base>
+                                            <access>private</access>
+                                            <summary>Represents a colour at a given point in a
+                                                gradient.</summary>
+                                            <instance>
+                                                <variables>
+                                                  <variable>
+                                                  <name>position</name>
+                                                  <types>
+                                                  <type>number</type>
+                                                  </types>
+                                                  <summary>The position in a gradient at which this
+                                                  stop’s colour should occur.</summary>
+                                                  <details>
+                                                  <paragraph>Stored as a fraction between
+                                                  <code>0</code> (start) and <code>1</code>
+                                                  (end).</paragraph>
+                                                  </details>
+                                                  </variable>
+                                                </variables>
+                                            </instance>
+                                            <remarks>
+                                                <paragraph>This class is used internally by the <link>
+                                                  <internal>Colour</internal>
+                                                  </link> class. To add stops to a gradient, use the <link>
+                                                  <internal>Colour_addStop</internal>
+                                                  </link> method.</paragraph>
+                                            </remarks>
+                                        </class>
+                                    </classes>
+                                </static>
+                                <instance>
+                                    <variables>
+                                        <variable id="Stop_from">
+                                            <name>from</name>
+                                            <types>
+                                                <type>string</type>
+                                            </types>
+                                            <summary>The edge at which the gradient
+                                                starts.</summary>
+                                            <details>
+                                                <paragraph>Should be one of the following
+                                                  values:</paragraph>
+                                                <list>
+                                                  <item>
+                                                  <paragraph><code>left</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>top</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>right</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>bottom</code></paragraph>
+                                                  </item>
+                                                </list>
+                                            </details>
+                                        </variable>
+                                        <variable>
+                                            <name>stops</name>
+                                            <types>
+                                                <type>Array</type>
+                                            </types>
+                                            <summary>The colour stops that define the colours of the
+                                                gradient.</summary>
+                                            <details>
+                                                <paragraph>An array of two or more <link>
+                                                  <internal>Stop</internal>
+                                                  </link> instances.</paragraph>
+                                            </details>
+                                            <remarks>
+                                                <paragraph>This array is sorted by the <link>
+                                                  <internal>Gradient</internal>
+                                                  </link> instance that owns it, based on stop
+                                                  positions. So <code>stops[0]</code> will always be
+                                                  the stop closest to the edge specified by the
+                                                  stop’s <link>
+                                                  <internal>Stop_from</internal>
+                                                  </link> property.</paragraph>
+                                            </remarks>
+                                            <example>
+                                                <paragraph>Get the colour of the last stop in a
+                                                  gradient:</paragraph>
+                                                <code>// suppose this is the contents of a CSS linear-gradient definition:
+
+var gradientDef = 'top, #336699 0, #6699cc 100%';
+
+// but we don’t know anything about this gradient, and we need to know
+// its final colour. Create a new Gradient:
+
+var myGradient = new hx.Colour.Gradient(gradientDef);
+
+// next, get its last stop:
+
+var lastStop = myGradient.stops[ myGradient.stops.length - 1 ];
+
+// gradient stops are instances of a class that extends hx.Colour, so
+// we can use any of the hx.Colour methods:
+
+console.log(lastStop.hex()); // #6699cc</code>
+                                                <paragraph>And the shorthand version of the above
+                                                  example:</paragraph>
+                                                <code>var allStops = hx.Colour.Gradient(gradientDef).stops;
+
+console.log(allStops[ allStops.length - 1 ].hex()); // #6699cc</code>
+                                            </example>
+                                        </variable>
+                                    </variables>
+                                    <methods>
+                                        <method id="Colour_addStop">
+                                            <name>addStop</name>
+                                            <overload>
+                                                <summary>Add a stop to the gradient.</summary>
+                                                <arguments>
+                                                  <argument>
+                                                  <name>colour</name>
+                                                  <types>
+                                                  <type>string</type>
+                                                  <link>
+                                                  <internal>Colour</internal>
+                                                  </link>
+                                                  </types>
+                                                  <summary>The colour of the stop to be added to the
+                                                  gradient.</summary>
+                                                  </argument>
+                                                  <argument>
+                                                  <name>position</name>
+                                                  <types>
+                                                  <type>number</type>
+                                                  </types>
+                                                  <summary>The position in the gradient at which the
+                                                  stop should be added.</summary>
+                                                  <details>
+                                                  <paragraph>Should be a number between
+                                                  <code>0</code> (start of the gradient) and
+                                                  <code>1</code> (end of the gradient).</paragraph>
+                                                  </details>
+                                                  </argument>
+                                                </arguments>
+                                                <returns>
+                                                  <types>
+                                                  <link>
+                                                  <internal>Gradient</internal>
+                                                  </link>
+                                                  </types>
+                                                  <summary>The instance on which the method was
+                                                  called, so subsequent calls may be
+                                                  chained.</summary>
+                                                </returns>
+                                                <example>
+                                                  <paragraph>Create a gradient and add three stops –
+                                                  black at the start, red in the middle and white at
+                                                  the end.</paragraph>
+                                                  <code>// create a new gradient, starting from the left edge:
+
+var myGradient = new hx.Colour.Gradient('left');
+
+// start with a black stop at the start:
+
+var black = new hx.Colour('#000');
+myGradient.addStop(black, 0);
+
+// you can also use any string recognised by the hx.Colour constructor.
+// let’s add a red stop in the middle:
+
+myGradient.addStop('rgb(255, 0, 0)', 0.5);
+
+// finally, a white stop at the end:
+
+myGradient.addStop('#ffffff', 1);</code>
+                                                  <paragraph>You can also chain calls
+                                                  together:</paragraph>
+                                                  <code>myGradient
+.addStop('#000', 0)
+.addStop('#f00', .5)
+.addStop('#fff', 1);</code>
+                                                </example>
+                                            </overload>
+                                        </method>
+                                        <method>
+                                            <name>hasAlpha</name>
+                                            <overload>
+                                                <summary>Whether any stops in the gradient are not
+                                                  opaque.</summary>
+                                                <returns>
+                                                  <types>
+                                                  <type>boolean</type>
+                                                  </types>
+                                                  <summary>True if any stops in the gradient are not
+                                                  opaque, or false if all stops are
+                                                  opaque.</summary>
+                                                </returns>
+                                            </overload>
+                                        </method>
+                                    </methods>
+                                </instance>
+                            </class>
+                        </classes>
+                    </static>
+                    <instance>
+                        <methods>
+                            <method>
+                                <name>rgb</name>
+                                <overload>
+                                    <summary>Get an array of the current red, green and blue
+                                        values.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>Array</type>
+                                        </types>
+                                        <summary>An array of the current red, green and blue
+                                            values.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour from a hex value and log its
+                                            RGB values.</paragraph>
+                                        <code>var red = new hx.Colour('#f00');
+
+console.log(red.rgb());  // [255, 0, 0]</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the current red, green and blue
+                                        values.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>red</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A red value between 0 and 255.</summary>
+                                        </argument>
+                                        <argument>
+                                            <name>green</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A green value between 0 and 255.</summary>
+                                        </argument>
+                                        <argument>
+                                            <name>blue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A blue value between 0 and 255.</summary>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>You can preserve an existing channel (red, green
+                                            or blue) by passing <code>null</code> instead of a
+                                            number as any of the three required
+                                            arguments.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Create a new colour, set its RGB values, and log
+                                            the result.</paragraph>
+                                        <code>var red = new hx.Colour;  // defaults to black
+
+red.rgb(255, 0, 0);  // red now represents the colour red!
+
+console.log(red.rgb());  // [255, 0, 0]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>rgba</name>
+                                <overload>
+                                    <summary>Get an array of the current red, green, blue and alpha
+                                        values.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>Array</type>
+                                        </types>
+                                        <summary>An array of the current red, green, blue and alpha
+                                            values.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour from a hex value and log its
+                                            RGBA values.</paragraph>
+                                        <code>var red = new hx.Colour('#80ff0000');
+
+console.log(red.rgba());  // [255, 0, 0, 0.5]</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the current red, green, blue and alpha
+                                        values.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>red</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A red value between 0 and 255.</summary>
+                                        </argument>
+                                        <argument>
+                                            <name>green</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A green value between 0 and 255.</summary>
+                                        </argument>
+                                        <argument>
+                                            <name>blue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A blue value between 0 and 255.</summary>
+                                        </argument>
+                                        <argument>
+                                            <name>alpha</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>An alpha value between 0 (invisible) and 1
+                                                (opaque).</summary>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>You can preserve an existing channel (red, green,
+                                            blue or alpha) by passing <code>null</code> instead of a
+                                            number as any of the four required
+                                            arguments.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Create a new colour, set its RGBA values, and log
+                                            the result.</paragraph>
+                                        <code>var red = new hx.Colour;  // defaults to black
+
+red.rgba(255, 0, 0, 0.5);  // red now represents the colour red at 50% opacity!
+
+console.log(red.rgb());  // [255, 0, 0, 0.5]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>hsl</name>
+                                <overload>
+                                    <summary>Get an array of the current hue, saturation and
+                                        luminance values.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>Array</type>
+                                        </types>
+                                        <summary>An array of the current hue, saturation and
+                                            luminance values.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour from a hex value and log its
+                                            HSL values.</paragraph>
+                                        <code>var red = new hx.Colour('#f00');
+
+console.log(red.hsl());  // [0, 1, 0.5]</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the current hue, saturation and luminance
+                                        values.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>hue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A hue value between 0 and 360.</summary>
+                                            <details>
+                                                <paragraph>Any numeric value is valid for this
+                                                  argument, and will be wrapped around the colour
+                                                  spectrum. For example, an angle of 365° will be
+                                                  interpreted as 5°, just as -5° will be interpreted
+                                                  as 355°.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>sat</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A saturation value between 0 (grey) and 1
+                                                (fully saturated).</summary>
+                                            <details>
+                                                <paragraph>Most software, including Photoshop,
+                                                  normalizes saturation between 0 and 100. This
+                                                  method uses floating point accuracy; to convert a
+                                                  percentage to a fraction, divide by
+                                                  100.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>lum</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A luminance value between 0 (black) and 1
+                                                (white).</summary>
+                                            <details>
+                                                <paragraph>Most software, including Photoshop,
+                                                  normalizes luminance between 0 and 100. This
+                                                  method uses floating point accuracy; to convert a
+                                                  percentage to a fraction, divide by
+                                                  100.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>You can preserve an existing value (hue,
+                                            saturation or luminance) by passing <code>null</code>
+                                            instead of a number as any of the three required
+                                            arguments.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Create a new colour, set its HSL values, and log
+                                            the result.</paragraph>
+                                        <code>var red = new hx.Colour;  // defaults to black
+
+red.hsl(0, 1, 0.5);  // red now represents the colour red!
+
+console.log(red.hsl());  // [0, 1, 0.5]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>hsla</name>
+                                <overload>
+                                    <summary>Get an array of the current hue, saturation, luminance
+                                        and alpha values.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>Array</type>
+                                        </types>
+                                        <summary>An array of the current hue, saturation, luminance
+                                            and alpha values.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour from a hex value and log its
+                                            HSLA values.</paragraph>
+                                        <code>var red = new hx.Colour('#80ff0000');
+
+console.log(red.hsla());  // [0, 1, 0.5, 0.5]</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the current hue, saturation, luminance and
+                                        alpha values.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>hue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A hue value between 0 and 360.</summary>
+                                            <details>
+                                                <paragraph>Any numeric value is valid for this
+                                                  argument, and will be wrapped around the colour
+                                                  spectrum. For example, an angle of 365° will be
+                                                  interpreted as 5°, just as -5° will be interpreted
+                                                  as 355°.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>sat</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A saturation value between 0 (grey) and 1
+                                                (fully saturated).</summary>
+                                            <details>
+                                                <paragraph>Most software, including Photoshop,
+                                                  normalizes saturation between 0 and 100. This
+                                                  method uses floating point accuracy; to convert a
+                                                  percentage to a fraction, divide by
+                                                  100.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>lum</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A luminance value between 0 (black) and 1
+                                                (white).</summary>
+                                            <details>
+                                                <paragraph>Most software, including Photoshop,
+                                                  normalizes luminance between 0 and 100. This
+                                                  method uses floating point accuracy; to convert a
+                                                  percentage to a fraction, divide by
+                                                  100.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>alpha</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>An alpha value between 0 (invisible) and 1
+                                                (opaque).</summary>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>You can preserve an existing value (hue,
+                                            saturation, luminance or alpha) by passing
+                                            <code>null</code> instead of a number as any of the four
+                                            required arguments.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Create a new colour, set its HSLA values, and log
+                                            the result.</paragraph>
+                                        <code>var red = new hx.Colour;  // defaults to black
+
+red.hsla(0, 1, 0.5, 0.5);  // red now represents the colour red at 50% opacity!
+
+console.log(red.hsla());  // [0, 1, 0.5, 0.5]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>red</name>
+                                <overload>
+                                    <summary>Get the colour’s red component.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A byte (integer) value between 0 (no red) and 255
+                                            (full red).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the red component from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = 'f5f9fc';
+
+var myColour = new hx.Colour(hexValue);
+
+var redComponent = myColour.red(); // 245</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var redComponent = hx.Colour('f5f9fc').red(); // 245</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s red component.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (no red) and 255 (full
+                                                red).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped. Fractional values will be
+                                                  rounded.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its red
+                                            component:</paragraph>
+                                        <code>var myColour = new hx.Colour(100, 100, 100);
+
+myColour.red(150); // red component is now 150
+
+console.log(myColour.rgb()); // [150, 100, 100]</code>
+                                        <paragraph>You can also adjust the red component, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.red(-25, true); // decrease the red component by 25
+
+console.log(myColour.rgb()); // [125, 100, 100]</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour(100, 100, 100).red(150).rgb()); // [150, 100, 100]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>green</name>
+                                <overload>
+                                    <summary>Get the colour’s green component.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A byte (integer) value between 0 (no green) and 255
+                                            (full green).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the green component from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = 'f5f9fc';
+
+var myColour = new hx.Colour(hexValue);
+
+var greenComponent = myColour.green(); // 249</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var greenComponent = hx.Colour('f5f9fc').green(); // 249</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s green component.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (no green) and 255 (full
+                                                green).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped. Fractional values will be
+                                                  rounded.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its green
+                                            component:</paragraph>
+                                        <code>var myColour = new hx.Colour(100, 100, 100);
+
+myColour.green(150); // green component is now 150
+
+console.log(myColour.rgb()); // [100, 150, 100]</code>
+                                        <paragraph>You can also adjust the green component, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.green(-25, true); // decrease the green component by 25
+
+console.log(myColour.rgb()); // [100, 125, 100]</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour(100, 100, 100).green(150).rgb()); // [100, 150, 100]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>blue</name>
+                                <overload>
+                                    <summary>Get the colour’s blue component.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A byte (integer) value between 0 (no red) and 255
+                                            (full blue).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the blue component from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = 'f5f9fc';
+
+var myColour = new hx.Colour(hexValue);
+
+var blueComponent = myColour.blue(); // 252</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var blueComponent = hx.Colour('f5f9fc').blue(); // 252</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s blue component.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (no blue) and 255 (full
+                                                blue).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped. Fractional values will be
+                                                  rounded.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its blue
+                                            component:</paragraph>
+                                        <code>var myColour = new hx.Colour(100, 100, 100);
+
+myColour.blue(150); // blue component is now 150
+
+console.log(myColour.rgb()); // [100, 100, 150]</code>
+                                        <paragraph>You can also adjust the blue component, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.blue(-25, true); // decrease the blue component by 25
+
+console.log(myColour.rgb()); // [100, 100, 125]</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour(100, 100, 100).blue(150).rgb()); // [100, 100, 150]</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>hue</name>
+                                <overload>
+                                    <summary>Get the colour’s hue angle, in degrees.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A number between 0 (inclusive) and 360
+                                            (exclusive).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the hue angle of a colour from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = 'ff6600';
+
+var myColour = new hx.Colour(hexValue);
+
+var hueAngle = myColour.hue(); // 24</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var hueAngle = hx.Colour('ff6600').hue(); // 24</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s hue angle, in degrees.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (inclusive) and 360
+                                                (exclusive).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  wrapped around the colour spectrum. For example,
+                                                  an angle of 365° will be interpreted as 5°, just
+                                                  as -5° will be interpreted as 355°.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its hue
+                                            angle:</paragraph>
+                                        <code>var myColour = new hx.Colour('ff6600');
+
+myColour.hue(36); // hue angle is now 36
+
+console.log(myColour.hex()); // #ff9900</code>
+                                        <paragraph>You can also adjust the hue angle, rather than
+                                            replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.hue(24, true); // decrease the hue angle by 24
+
+console.log(myColour.hex()); // #ff0066</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour('ff6600').hue(36).hex()); // #ff9900</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>sat</name>
+                                <overload>
+                                    <summary>Get the colour’s saturation level.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A number between 0 (grey) and 1 (fully
+                                            saturated).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the saturation level of a colour from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = '336699';
+
+var myColour = new hx.Colour(hexValue);
+
+var saturation = myColour.sat(); // 0.5</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var saturation = hx.Colour('336699').sat(); // 0.5</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s saturation level.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (grey) and 1 (fully
+                                                saturated).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its saturation
+                                            level:</paragraph>
+                                        <code>var myColour = new hx.Colour('336699');
+
+myColour.sat(1); // saturation is now 100%
+
+console.log(myColour.hex()); // #0066cc</code>
+                                        <paragraph>You can also adjust the saturation level, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.sat(-0.5, true); // decrease the saturation level by 50%
+
+console.log(myColour.hex()); // #336699</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour('336699').sat(1).hex()); // #0066cc</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>lum</name>
+                                <overload>
+                                    <summary>Get the colour’s luminance level.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A number between 0 (black) and 1 (white).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the luminance level of a colour from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = '336699';
+
+var myColour = new hx.Colour(hexValue);
+
+var luminance = myColour.lum(); // 0.4</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var luminance = hx.Colour('336699').lum(); // 0.4</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s luminance level.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (black) and 1
+                                                (white).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its luminance
+                                            level:</paragraph>
+                                        <code>var myColour = new hx.Colour('336699');
+
+myColour.lum(0.6); // luminance is now 60%
+
+console.log(myColour.hex()); // #6699cc</code>
+                                        <paragraph>You can also adjust the luminance level, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.lum(-0.2, true); // decrease the luminance level by 20%
+
+console.log(myColour.hex()); // #336699</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour('336699').lum(0.6).hex()); // #6699cc</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>alpha</name>
+                                <overload>
+                                    <summary>Get the colour’s opacity.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>number</type>
+                                        </types>
+                                        <summary>A number between 0 (invisible) and 1
+                                            (opaque).</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the opacity of a colour from a hex
+                                            string.</paragraph>
+                                        <code>var hexValue = '7f336699';
+
+var myColour = new hx.Colour(hexValue);
+
+var alpha = myColour.alpha(); // 0.5</code>
+                                        <paragraph>Or the shorthand version:</paragraph>
+                                        <code>var alpha = hx.Colour('7f336699').alpha(); // 0.5</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Set the colour’s opacity.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>number</type>
+                                            </types>
+                                            <summary>A new value between 0 (invisible) and 1
+                                                (opaque).</summary>
+                                            <details>
+                                                <paragraph>Values outside the above limits will be
+                                                  clipped.</paragraph>
+                                            </details>
+                                        </argument>
+                                        <argument>
+                                            <name>relative</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to add the current value to the new
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>If omitted, defaults to
+                                                  <code>false</code>.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour, and replace its
+                                            opacity:</paragraph>
+                                        <code>var myColour = new hx.Colour('7f336699');
+
+myColour.lum(0.25); // opacity is now 25%
+
+console.log(myColour.hexa()); // #3f336699</code>
+                                        <paragraph>You can also adjust the luminance level, rather
+                                            than replace it, by passing the <code>relative</code>
+                                            argument as <code>true</code>:</paragraph>
+                                        <code>myColour.lum(0.5, true); // increase opacity by 50%
+
+console.log(myColour.hexa()); // #bf336699</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour('7f336699').alpha(0.25).hexa()); // #3f336699</code>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>hex</name>
+                                <overload>
+                                    <summary>Get the colour’s RGB hex representation, optionally
+                                        prefixed by a ‘#’ (hash) character.</summary>
+                                    <details>
+                                        <paragraph>This method returns the colour as a six-digit hex
+                                            value, commonly used by HTML and CSS.</paragraph>
+                                        <paragraph>By default, the <code>#</code> character is
+                                            included as a prefix; pass <code>false</code> as the
+                                            only argument to just get the six-digit hex
+                                            code.</paragraph>
+                                    </details>
+                                    <arguments>
+                                        <argument>
+                                            <name>withHashPrefix</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to include the ‘#’ (hash) character
+                                                before the return string.</summary>
+                                            <details>
+                                                <paragraph>When omitted, defaults to
+                                                  <code>true</code>.</paragraph>
+                                                <paragraph>If included, <strong>must</strong> be a
+                                                  real boolean; truthy/falsy values like
+                                                  <code>null</code> or <code>'1'</code> won’t
+                                                  work.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>The colour’s six-digit RGB hex representation, with
+                                            an optional ‘#’ (hash) prefix.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Get the hex value of a colour from its red, green
+                                            and blue values:</paragraph>
+                                        <code>var myColour = new hx.Colour(0, 127, 255);
+
+console.log(myColour.hex()); // #007fff</code>
+                                        <paragraph>Or, in shorthand, and without the <code>#</code>
+                                            prefix:</paragraph>
+                                        <code>console.log(hx.Colour(0, 127, 255).hex(false)); // 007fff</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the colour using an RGB hex value.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>string</type>
+                                            </types>
+                                            <summary>A new three- or six-digit RGB hex
+                                                value.</summary>
+                                            <details>
+                                                <paragraph>Three-digit shorthand strings are
+                                                  interpreted by repeating each digit, so
+                                                  <code>#69c</code> becomes
+                                                  <code>#6699cc</code>.</paragraph>
+                                                <paragraph>You can include the <code>#</code> prefix
+                                                  if you wish; it will be ignored.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>If the colour’s alpha value is <code>0</code>
+                                            (invisible), it will be changed to <code>1</code>
+                                            (opaque) when this method is called. Otherwise, it will
+                                            be preserved.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Create a new colour and set it with an RGB hex
+                                            value:</paragraph>
+                                        <code>var myColour = new hx.Colour;
+
+myColour.hex('#003366');
+
+console.log(myColour.rgb()); // [0, 51, 102]</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour().hex('036').rgb()); // [0, 51, 102]</code>
+                                        <paragraph>Note the above example is unnecessarily
+                                            complicated, as the <code>Colour()</code> constructor
+                                            accepts RGB hex values directly.</paragraph>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>hexa</name>
+                                <overload>
+                                    <summary>Get the colour’s ARGB hex representation, optionally
+                                        prefixed by a ‘#’ (hash) character.</summary>
+                                    <details>
+                                        <paragraph>This method returns the colour as an eight-digit
+                                            hex value, sometimes used by Internet Explorer in HTML
+                                            and CSS.</paragraph>
+                                        <paragraph>By default, the <code>#</code> character is
+                                            included as a prefix; pass <code>false</code> as the
+                                            only argument to just get the eight-digit hex
+                                            code.</paragraph>
+                                    </details>
+                                    <arguments>
+                                        <argument>
+                                            <name>withHashPrefix</name>
+                                            <optional/>
+                                            <types>
+                                                <type>boolean</type>
+                                            </types>
+                                            <summary>Whether to include the ‘#’ (hash) character
+                                                before the return string.</summary>
+                                            <details>
+                                                <paragraph>When omitted, defaults to
+                                                  <code>true</code>.</paragraph>
+                                                <paragraph>If included, <strong>must</strong> be a
+                                                  real boolean; truthy/falsy values like
+                                                  <code>null</code> or <code>'1'</code> won’t
+                                                  work.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>The colour’s eight-digit ARGB hex representation,
+                                            with an optional ‘#’ (hash) prefix.</summary>
+                                    </returns>
+                                    <remarks>
+                                        <paragraph>If the colour’s alpha value is <code>1</code>
+                                            (opaque), the first two digits will be omitted and a
+                                            regular six-digit hex string will be
+                                            returned.</paragraph>
+                                    </remarks>
+                                    <example>
+                                        <paragraph>Get the hex value of a colour from its alpha,
+                                            red, green and blue values:</paragraph>
+                                        <code>var myColour = new hx.Colour(0, 127, 255, 0.5);
+
+console.log(myColour.hexa()); // #7f007fff</code>
+                                        <paragraph>Or, in shorthand, and without the <code>#</code>
+                                            prefix:</paragraph>
+                                        <code>console.log(hx.Colour(0, 127, 255, 0.5).hex(false)); // 7f007fff</code>
+                                    </example>
+                                </overload>
+                                <overload>
+                                    <summary>Replace the colour using an ARGB hex value.</summary>
+                                    <arguments>
+                                        <argument>
+                                            <name>newValue</name>
+                                            <types>
+                                                <type>string</type>
+                                            </types>
+                                            <summary>A new eight-digit ARGB hex value.</summary>
+                                            <details>
+                                                <paragraph>You can include the <code>#</code> prefix
+                                                  if you wish; it will be ignored.</paragraph>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <link>
+                                                <internal>Colour</internal>
+                                            </link>
+                                        </types>
+                                        <summary>The instance on which the method was called, so
+                                            subsequent calls may be chained.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a new colour and set it with an ARGB hex
+                                            value:</paragraph>
+                                        <code>var myColour = new hx.Colour;
+
+myColour.hexa('#7f003366');
+
+console.log(myColour.rgba()); // [0, 51, 102, 0.5]</code>
+                                        <paragraph>And the shorthand version:</paragraph>
+                                        <code>console.log(hx.Colour().hex('7f003366').rgba()); // [0, 51, 102, 0.5]</code>
+                                        <paragraph>Note the above example is unnecessarily
+                                            complicated, as the <code>Colour()</code> constructor
+                                            accepts ARGB hex values directly.</paragraph>
+                                    </example>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>toString</name>
+                                <overload>
+                                    <summary>Get a string representation of the colour.</summary>
+                                    <details>
+                                        <paragraph>By default, this method will return an RGB hex
+                                            representation of the colour, just like the
+                                            <code>hex()</code> method.</paragraph>
+                                        <paragraph>You can retrieve special CSS formats, such as
+                                            <code>rgb(1, 2, 3)</code> and
+                                            <code>hsla(1, 2, 3, 0.4)</code> by passing the optional
+                                            <code>format</code> argument. See below for
+                                            details.</paragraph>
+                                    </details>
+                                    <arguments>
+                                        <argument>
+                                            <name>format</name>
+                                            <optional/>
+                                            <types>
+                                                <type>string</type>
+                                            </types>
+                                            <summary>The format of the returned string.</summary>
+                                            <details>
+                                                <paragraph>May be one of the following
+                                                  values:</paragraph>
+                                                <list>
+                                                  <item>
+                                                  <paragraph><code>rgb</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>rgba</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>hsl</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>hsla</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>hex</code></paragraph>
+                                                  </item>
+                                                  <item>
+                                                  <paragraph><code>hexa</code></paragraph>
+                                                  </item>
+                                                </list>
+                                            </details>
+                                        </argument>
+                                    </arguments>
+                                    <returns>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>A string representation of the colour.</summary>
+                                    </returns>
+                                    <example>
+                                        <paragraph>Create a colour using an ARGB hex value, and
+                                            retrieve a CSS-compatible string
+                                            representation:</paragraph>
+                                        <code>var myColour = new hx.Colour;
+
+myColour.hexa('#7f336699');
+
+console.log(myColour.toString('rgba'); // rgba(51, 102, 153, 0.5)</code>
+                                    </example>
+                                </overload>
+                            </method>
+                        </methods>
+                    </instance>
+                </class>
+                <class>
+                    <name>StyleSheet</name>
+                    <summary>Represents a CSS stylesheet which can be modified and applied to the
+                        current document.</summary>
+                    <static>
+                        <classes>
+                            <class id="Declaration">
+                                <name>Declaration</name>
+                                <summary>Represents a single CSS declaration, consisting of a
+                                    property and a value.</summary>
+                            </class>
+                            <class id="RuleSet">
+                                <name>RuleSet</name>
+                                <summary>Represents a set of CSS rules, consisting of one or more
+                                    selectors, and one or more declarations.</summary>
+                                <instance>
+                                    <variables>
+                                        <variable>
+                                            <name>declarations</name>
+                                            <types>
+                                                <type>Array</type>
+                                            </types>
+                                            <summary>An array of CSS declarations to be applied to
+                                                elements matching the ruleset’s selectors.</summary>
+                                            <details>
+                                                <paragraph>Contains zero or more <link>
+                                                  <internal>Declaration</internal>
+                                                  </link> instances.</paragraph>
+                                            </details>
+                                        </variable>
+                                        <variable>
+                                            <name>selectors</name>
+                                            <types>
+                                                <type>Array</type>
+                                            </types>
+                                            <summary>An array of CSS selectors that determine which
+                                                elements will be affected by the ruleset’s
+                                                declarations.</summary>
+                                            <details>
+                                                <paragraph>Contains one or more strings, each
+                                                  representing a single CSS selector. In an embedded
+                                                  or linked stylesheet, elements in this array would
+                                                  appear as a comma-separated list preceeding an
+                                                  opening brace (<code>{</code>).</paragraph>
+                                            </details>
+                                            <example>
+                                                <paragraph>If this were the ruleset...</paragraph>
+                                                <code>#foo, div.bar p, li:first-child {
+    color: #f00;
+}</code>
+                                                <paragraph>... then this would be the
+                                                  <code>selectors</code> array:</paragraph>
+                                                <code>['#f00', 'div.bar p', 'li:first-child']</code>
+                                            </example>
+                                        </variable>
+                                    </variables>
+                                    <methods>
+                                        <method>
+                                            <name>append</name>
+                                            <overload>
+                                                <summary>Append declarations from another rulset
+                                                  into the ruleset.</summary>
+                                                <arguments>
+                                                  <argument>
+                                                  <name>otherRuleSet</name>
+                                                  <types>
+                                                  <link>
+                                                  <internal>RuleSet</internal>
+                                                  </link>
+                                                  </types>
+                                                  <summary>The ruleset to be added.</summary>
+                                                  </argument>
+                                                </arguments>
+                                            </overload>
+                                        </method>
+                                        <method>
+                                            <name>backfit</name>
+                                            <overload>
+                                                <summary>Make the necessary adjustments to rules in
+                                                  the ruleset so that they work in the current
+                                                  browser.</summary>
+                                            </overload>
+                                        </method>
+                                        <method>
+                                            <name>selector</name>
+                                            <overload>
+                                                <summary>Get the ruleset’s selectors as a
+                                                  comma-separated list.</summary>
+                                                <returns>
+                                                  <types>
+                                                  <type>string</type>
+                                                  </types>
+                                                  <summary>The ruleset’s selectors as a
+                                                  comma-separated list.</summary>
+                                                </returns>
+                                            </overload>
+                                        </method>
+                                        <method>
+                                            <name>toString</name>
+                                            <overload>
+                                                <summary>Export the ruleset as CSS text.</summary>
+                                                <returns>
+                                                  <types>
+                                                  <type>string</type>
+                                                  </types>
+                                                  <summary>The ruleset as CSS text.</summary>
+                                                </returns>
+                                            </overload>
+                                        </method>
+                                    </methods>
+                                </instance>
+                            </class>
+                        </classes>
+                    </static>
+                    <instance>
+                        <variables>
+                            <variable>
+                                <name>ruleSets</name>
+                                <types>
+                                    <type>Array</type>
+                                </types>
+                                <summary>An array of rule sets comprising the stylesheet.</summary>
+                                <details>
+                                    <paragraph>Contains zero or more <link>
+                                            <internal>RuleSet</internal>
+                                        </link> instances.</paragraph>
+                                </details>
+                            </variable>
+                        </variables>
+                        <methods>
+                            <method id="StyleSheet_adjustColours">
+                                <name>adjustColours</name>
+                                <overload>
+                                    <summary>Adjust each colour in the stylesheet using a callback
+                                        method.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>adjustColors</name>
+                                <link>
+                                    <internal>StyleSheet_adjustColours</internal>
+                                </link>
+                            </method>
+                            <method>
+                                <name>adjustDeclarations</name>
+                                <overload>
+                                    <summary>Adjust each declaration in the stylesheet using a
+                                        callback method.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>adjustUrls</name>
+                                <overload>
+                                    <summary>Adjust each URL in the stylesheet using a callback
+                                        method.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>append</name>
+                                <overload>
+                                    <summary>Append another stylesheet to the end of the
+                                        stylesheet.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>apply</name>
+                                <overload>
+                                    <summary>Apply the stylesheet to the current document.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>backfit</name>
+                                <overload>
+                                    <summary>Make the necessary adjustments to rules in the
+                                        stylesheet so that they work in the current
+                                        browser.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>prepend</name>
+                                <overload>
+                                    <summary>Prepend another stylesheet to the beginning of the
+                                        stylesheet.</summary>
+                                </overload>
+                            </method>
+                            <method>
+                                <name>toString</name>
+                                <overload>
+                                    <summary>Export the stylesheet as CSS text.</summary>
+                                    <returns>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>The stylesheet as CSS text.</summary>
+                                    </returns>
+                                </overload>
+                            </method>
+                        </methods>
+                    </instance>
+                </class>
+            </classes>
+            <namespaces>
+                <namespace>
+                    <name>binary</name>
+                    <summary>Methods for encoding, decoding and hashing binary data.</summary>
+                    <methods>
+                        <method id="md5">
+                            <name>md5</name>
+                            <overload>
+                                <summary>Calculate the MD5 hash of a string.</summary>
+                                <arguments>
+                                    <argument>
+                                        <name>input</name>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>The string to be hashed.</summary>
+                                    </argument>
+                                    <argument>
+                                        <name>raw</name>
+                                        <optional/>
+                                        <types>
+                                            <type>boolean</type>
+                                        </types>
+                                        <summary>Whether to return the hash in raw binary
+                                            format.</summary>
+                                        <details>
+                                            <paragraph>If omitted, defaults to
+                                                <code>false</code>.</paragraph>
+                                            <paragraph>A raw MD5 hash is 16 bytes. If this argument
+                                                is false, the hash is base16 encoded and returned as
+                                                32 hex digits (the most commonly used human-readable
+                                                format).</paragraph>
+                                        </details>
+                                    </argument>
+                                </arguments>
+                                <returns>
+                                    <types>
+                                        <type>string</type>
+                                    </types>
+                                    <summary>The MD5 hash of the input string.</summary>
+                                </returns>
+                            </overload>
+                        </method>
+                        <method>
+                            <name>sha1</name>
+                            <overload>
+                                <summary>Calculate the SHA1 hash of a string.</summary>
+                                <arguments>
+                                    <argument>
+                                        <name>input</name>
+                                        <types>
+                                            <type>string</type>
+                                        </types>
+                                        <summary>The string to be hashed.</summary>
+                                    </argument>
+                                    <argument>
+                                        <name>raw</name>
+                                        <optional/>
+                                        <types>
+                                            <type>boolean</type>
+                                        </types>
+                                        <summary>Whether to return the hash in raw binary
+                                            format.</summary>
+                                        <details>
+                                            <paragraph>If omitted, defaults to
+                                                <code>false</code>.</paragraph>
+                                            <paragraph>A raw SHA1 hash is 20 bytes. If this argument
+                                                is false, the hash is base16 encoded and returned as
+                                                40 hex digits (the most commonly used human-readable
+                                                format).</paragraph>
+                                        </details>
+                                    </argument>
+                                </arguments>
+                                <returns>
+                                    <types>
+                                        <type>string</type>
+                                    </types>
+                                    <summary>The SHA1 hash of the input string.</summary>
+                                </returns>
+                            </overload>
+                        </method>
+                        <method>
+                            <name>utf8</name>
+                            <link>
+                                <internal>utf8_encode</internal>
+                            </link>
+                            <methods>
+                                <method id="utf8_encode">
+                                    <name>encode</name>
+                                    <overload>
+                                        <summary>Encode a unicode string as UTF-8.</summary>
+                                        <arguments>
+                                            <argument>
+                                                <name>unicodeString</name>
+                                                <types>
+                                                  <type>string</type>
+                                                </types>
+                                                <summary>The string to be encoded.</summary>
+                                            </argument>
+                                        </arguments>
+                                        <returns>
+                                            <types>
+                                                <type>string</type>
+                                            </types>
+                                            <summary>A UTF-8 representation of the input
+                                                string.</summary>
+                                        </returns>
+                                        <remarks>
+                                            <paragraph>JavaScript strings are stored using 16 bits
+                                                per character, which allows most unicode characters
+                                                (the common multilingual plane) to be represented
+                                                unencoded.</paragraph>
+                                            <paragraph>When you need to treat strings as binary (for
+                                                example, to be hashed or base64 encoded), they must
+                                                be converted to a binary-compatible encoding, so no
+                                                character has an index higher than 255. UTF-8 is the
+                                                most common encoding used by web
+                                                applications.</paragraph>
+                                        </remarks>
+                                        <example>
+                                            <paragraph>We want to know the MD5 hash of the string
+                                                <code>G’day</code>. That’s not an apostrophe, it's a
+                                                right single quote; its codepoint is
+                                                <code>8217</code>. Because MD5 hashing operates on
+                                                binary data, we can’t give it that string to the <link>
+                                                  <internal>md5</internal>
+                                                </link> hash function until we convert it to
+                                                characters whose codepoints are between
+                                                <code>0</code> and <code>255</code>.</paragraph>
+                                            <code>// first, the unicode string:
+
+var gday = 'G’day';
+
+// next, encode it as UTF-8:
+
+var utf8string = hx.binary.utf8.encode(gday); // Gâday
+
+// now we can hash it:
+
+console.log(hx.binary.md5(utf8string)); // f6b2cebf54a49d9384f077bf37c51793</code>
+                                        </example>
+                                    </overload>
+                                </method>
+                                <method>
+                                    <name>decode</name>
+                                    <overload>
+                                        <summary>Decode a UTF-8 string as a unicode
+                                            string.</summary>
+                                    </overload>
+                                </method>
+                            </methods>
+                        </method>
+                        <method>
+                            <name>base64</name>
+                            <link>
+                                <internal>base64_encode</internal>
+                            </link>
+                            <methods>
+                                <method id="base64_encode">
+                                    <name>encode</name>
+                                    <overload>
+                                        <summary>Encode a string as base64.</summary>
+                                    </overload>
+                                </method>
+                                <method>
+                                    <name>decode</name>
+                                    <overload>
+                                        <summary>Decode a base64 string.</summary>
+                                    </overload>
+                                </method>
+                            </methods>
+                        </method>
+                        <method>
+                            <name>base16</name>
+                            <link>
+                                <internal>base16_encode</internal>
+                            </link>
+                            <methods>
+                                <method id="base16_encode">
+                                    <name>encode</name>
+                                    <overload>
+                                        <summary>Encode a string as base 16 (hex).</summary>
+                                    </overload>
+                                </method>
+                                <method>
+                                    <name>decode</name>
+                                    <overload>
+                                        <summary>Decode a base 16 (hex) string.</summary>
+                                    </overload>
+                                </method>
+                            </methods>
+                        </method>
+                        <method>
+                            <name>base2</name>
+                            <link>
+                                <internal>base2_encode</internal>
+                            </link>
+                            <methods>
+                                <method id="base2_encode">
+                                    <name>encode</name>
+                                    <overload>
+                                        <summary>Encode a string as base 2 (binary).</summary>
+                                    </overload>
+                                </method>
+                                <method>
+                                    <name>decode</name>
+                                    <overload>
+                                        <summary>Decode a base 2 (binary) string.</summary>
+                                    </overload>
+                                </method>
+                            </methods>
+                        </method>
+                    </methods>
+                    <remarks>
+                        <paragraph>In addition to the various baseX encoding/decoding method sets in
+                            this namespace, there are also base4, base8, base32 and base128 methods,
+                            but they are not documented for lack of any real purpose beyond
+                            experimentation.</paragraph>
+                        <paragraph>Each baseX encoding/decoding method set is generated at runtime
+                            using the same code with just a different character pool, so there are
+                            only a few extra bytes in the library's code for these methods to
+                            exist.</paragraph>
+                        <paragraph>If you’re feeling adventurous, you can create your own encoders
+                            using the <code>baseEncoder</code> internal method, which is not
+                            currently documented.</paragraph>
+                    </remarks>
+                </namespace>
+            </namespaces>
+            <remarks>
+                <paragraph>The <code>hx</code> global variable may not be available if the
+                    <code>noConflict</code> method has been called.</paragraph>
+            </remarks>
+        </namespace>
+    </namespaces>
+</package>

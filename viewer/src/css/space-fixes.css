@@ -1,0 +1,46 @@
+.contents a.name *,
+tbody th a *,
+h2 *,
+.returns ul.types,
+.constructor h4 *
+{
+    font-size: 0;
+}
+
+h2 :before,
+h2 :after,
+h2 span,
+h2 li.type,
+h2 .link *
+{
+    font-size: 21px;
+}
+
+.contents a.name :before,
+.contents a.name :after,
+.contents a.name span,
+.contents a.name li.type,
+.contents a.name li.link
+{
+    font-size: 13px;
+}
+
+tbody th a :before,
+tbody th a :after,
+tbody th a span,
+tbody th a li.type,
+tbody th a li.link,
+
+.constructor h4 :before,
+.constructor h4 :after,
+.constructor h4 span,
+.constructor h4 li.type,
+.constructor h4 .link *,
+
+.returns ul.types li {
+    font-size: 14px;
+}
+
+ul.arguments span.name:before {
+    content: "\A0";
+}

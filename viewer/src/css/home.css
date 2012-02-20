@@ -1,0 +1,105 @@
+.masthead {
+    background: linear-gradient(top, #1063b0 0, #14437f 100%);
+    padding: 7px 15px 11px;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    color: #fff;
+    font-size: 28px;
+    text-shadow: 0 0 13px rgba(0,0,0,.5);
+}
+
+.masthead .language {
+    position: absolute;
+    display: block;
+    top: -20px;
+    right: -20px;
+    background: #fff;
+    color: #0a5cb9;
+    padding: 23px 27px 4px 10px;
+    border-bottom-left-radius: 10px;
+    height: 13px;
+    font-size: 13px;
+    line-height: 13px;
+    box-shadow: 0 0 20px rgba(0,0,0,.35);
+}
+
+.version {
+    color: #abbdd4;
+    font-size: 13px;
+    margin-top: -3px;
+}
+
+.vitals {
+    background: #f5f9fc;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e7eef5;
+}
+
+.author {
+    color: #08336b;
+    float: left;
+}
+
+.copyright {
+    color: #adb7c5;
+    float: right;
+}
+
+.author, .copyright {
+    padding-bottom: 20px;
+}
+
+.license {
+    float: right;
+    clear: left;
+    color: #647383;
+    font-style: italic;
+}
+
+.websites {
+    clear: left;
+    height: 1%;
+    overflow: auto;
+}
+
+.websites dt {
+    display: block;
+    clear: left;
+    float: left;
+    width: 110px;
+    color: #59616a;
+}
+
+.websites dd {
+    padding-bottom: 6px;
+    display: block;
+    float: left;
+    clear: right;
+}
+
+.websites a {
+    color: #3d63c4;
+}
+
+.websites a:hover {
+    color: #008aff;
+}
+
+.home .summary {
+    padding: 15px 15px 20px;
+    color: #2d4158;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.home .details {
+    padding: 0 30px;
+}
+
+.home > div h4 {
+    font-size: 16px;
+    margin-left: -15px;
+}

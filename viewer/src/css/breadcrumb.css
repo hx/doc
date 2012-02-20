@@ -1,0 +1,192 @@
+.breadcrumb {
+    padding: 8px 0 4px 8px;
+    border-bottom: 1px solid #d3d3d3;
+    font-size: 0;
+    line-height: 12px;
+    background: #f0f0f0;
+    background: linear-gradient(top, #fcfcfc 0, #e5e5e5 100%);
+}
+
+.breadcrumb li {
+    font-size: 12px;
+    display: inline-block;
+    height: 19px;
+    padding: 1px 0;
+    margin-bottom: 3px;
+    vertical-align: top;
+}
+
+.breadcrumb li + li:before {
+    content: ">";
+    display: inline-block;
+    padding: 0 8px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+    color: #777;
+}
+
+.breadcrumb .home a:hover {
+    box-shadow: 0 0 9px rgba(41, 48, 132, .4);
+}
+
+.breadcrumb a {
+    display: inline-block;
+    border: 1px solid;
+    height: 14px;
+    padding: 3px 4px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+    color: #fff;
+    background: #606060;
+    background: linear-gradient(top, #888 0, #333 100%);
+    border-color: #808080;
+}
+
+.breadcrumb .home a {
+    text-shadow: 0 1px 0 rgba(0,0,0,.65);
+    color: #fff;
+    background: #1b56ab;
+    background: linear-gradient(top, #2679d0 0, #0f3083 100%);
+    border-color: #1354d7;
+}
+
+.breadcrumb .active a,
+.breadcrumb .namespace a:hover {
+    box-shadow: 0 0 9px rgba(1, 46, 88, .5);
+}
+
+
+
+/* methods (greenish) */
+
+.method .breadcrumb {
+    background: #edf8eb;
+    background: linear-gradient(top, #f1f9f0 0, #eaf6e8 100%);
+    border-color: #d7efd6;
+}
+
+.method .breadcrumb li:before {
+    color: #559154;
+}
+
+.breadcrumb .method a {
+    background: #1e7500;
+    background: linear-gradient(top, #299f00 0, #165400 100%);
+    border-color: #008609;
+}
+
+.method .breadcrumb .active a,
+.breadcrumb .method a:hover {
+    box-shadow: 0 0 9px rgba(0, 255, 0, .4);
+}
+
+
+/* classes (aqua/blue) */
+
+.class .breadcrumb {
+    background: #ecf2f8;
+    background: linear-gradient(top, #f5f8fb 0, #e3ebf4 100%);
+    border-color: #d6e6ef;
+}
+
+.class .breadcrumb li:before {
+    color: #547391;
+}
+
+.breadcrumb .class a {
+    background: #167a9a;
+    background: linear-gradient(top, #1c9db8 0, #0f5378 100%);
+    border-color: #0477a2;
+}
+
+.class .breadcrumb .active a,
+.breadcrumb .class a:hover {
+    box-shadow: 0 0 9px rgba(0, 251, 236, .4);
+}
+
+
+
+
+/* events (indigo) */
+
+.event .breadcrumb {
+    background: #f5eefa;
+    background: linear-gradient(top, #f9f5fc 0, #f1e9f8 100%);
+    border-color: #e6d3f5;
+}
+
+.event .breadcrumb li:before {
+    color: #905bc6;
+}
+
+.breadcrumb .event a {
+    background: #7e4be1;
+    background: linear-gradient(top, #a360ea 0, #5633d7 100%);
+    border-color: #6d5a98;
+}
+
+.event .breadcrumb .active a,
+.breadcrumb .event a:hover {
+    box-shadow: 0 0 9px rgba(30, 0, 251, .5);
+}
+
+
+
+
+
+
+/* variables (orange) */
+
+.variable .breadcrumb {
+    background: #faf6ee;
+    background: linear-gradient(top, #fefcf9 0, #f6f0e4 100%);
+    border-color: #efe2d6;
+}
+
+.variable .breadcrumb li:before {
+    color: #bd5f26;
+}
+
+.breadcrumb .variable a {
+    background: #e87000;
+    background: linear-gradient(top, #f09800 0, #e35100 100%);
+    border-color: #d25c05;
+}
+
+.variable .breadcrumb .active a,
+.breadcrumb .variable a:hover {
+    box-shadow: 0 0 9px rgba(203, 77, 2, .75);
+}
+
+
+
+
+
+
+
+/* constants (ruby) */
+
+.constant .breadcrumb {
+    background: #faeef1;
+    background: linear-gradient(top, #fcf6f7 0, #f8e8ea 100%);
+    border-color: #eed7db;
+}
+
+.constant .breadcrumb li:before {
+    color: #bd2646;
+}
+
+.breadcrumb .constant a {
+    background: #a12641;
+    background: linear-gradient(top, #be3153 0, #821a2c 100%);
+    border-color: #93092c;
+}
+
+.constant .breadcrumb .active a,
+.breadcrumb .constant a:hover {
+    box-shadow: 0 0 9px rgba(203, 2, 54, .75);
+}
+
+
+
+
+
+

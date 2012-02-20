@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.errors {
+    background: #545f67;
+    font: 14px/20px Arial, sans-serif;
+    height: 100%;
+}
+
+body, html {
+    height: 100%;
+}
+
+.errors dd, .errors .badCode {
+    font-family: Consolas, Monaco, "Lucida Console", "Lucida Sans Typewriter", "Courier New", monospace;
+}
+
+.errors .masthead {
+    padding: 20px;
+    border-bottom: 1px solid #deebf8;
+    background: #edf5f9;
+    background: -moz-linear-gradient(top, #e5f1f6 0, #f4f9fc 100%);
+    background: -webkit-linear-gradient(top, #e5f1f6 0, #f4f9fc 100%);
+}
+
+.errors h1 {
+    display: inline-block;
+    font: 19px/19px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .6);
+    padding: 8px 20px 9px;
+    border: 1px solid #004eb8;
+    background: #1363b8;
+    background: -moz-linear-gradient(top, #1a88d1 0, #0e44a3 100%);
+    background: -webkit-linear-gradient(top, #1a88d1 0, #0e44a3 100%);
+    border-radius: 18px;
+}
+
+.errors .body {
+    background: #fff;
+    padding: 32px 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, .35);
+}
+
+.errors h2 {
+    font-weight: normal;
+    font-size: 26px;
+    color: #717171;
+    margin-top: 5px;
+}
+
+.errors .message {
+    font-size: 16px;
+    color: #104faa;
+    margin-top: 13px;
+}
+
+.errors .message em {
+    font-style: normal;
+    color: #a03501;
+}
+
+.errors .message a {
+    text-decoration: none;
+    color: #08f;
+}
+
+.errors .message a:hover {
+    text-decoration: underline;
+}
+
+.errors dl {
+    margin-top: 28px;
+    position: relative;
+}
+
+.errors dt {
+    width: 70px;
+    position: absolute;
+    left: 0;
+    text-align: right;
+    color: #4f6e86;
+    padding-bottom: 4px;
+}
+
+.errors dt:after {
+    content: ":";
+}
+
+.errors dd {
+    margin-left: 86px;
+}
+
+.errors dd.line, .errors dd .number {
+    color: #128706;
+}
+
+.errors dd.problem {
+    color: #034733;
+}
+
+.errors .badCode {
+    clear: both;
+    margin-top: 12px;
+    background: #fdfbef;
+    border: 1px solid #d7d5c7;
+    padding: 3px 0;
+    border-radius: 5px;
+    color: #9f908f;
+    overflow: auto;
+    white-space: pre;
+}
+
+.errors .badCode div {
+    padding: 0 6px;
+}
+
+.errors .badCode .focus {
+    background: #f2eadd;
+    color: #432121;
+}
+
+.errors .badCode span {
+    font-size: 12px;
+    display: inline-block;
+    width: 40px;
+    color: #a7b3bb;
+}
+
+.errors .badCode .focus span {
+    color: #7395aa;
+}

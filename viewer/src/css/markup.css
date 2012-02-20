@@ -1,0 +1,92 @@
+.details, .remarks {
+    padding: 15px 15px 0;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #385a79;
+    margin: 15px 0;
+}
+
+h4:first-child {
+    margin-top: 0;
+}
+
+p, li code, div code {
+    margin-bottom: 9px;
+}
+
+p {
+    color: #333;
+}
+
+.details ol, .markup ol,
+.details ul, .markup ul {
+    padding-left: 30px;
+}
+
+.details li, .markup li {
+    display: list-item;
+    list-style: disc;
+}
+
+.details ol li, .markup ol li {
+    list-style: decimal;
+}
+
+code {
+    background: #24445d;
+    color: #fff;
+    padding: 7px 10px;
+    overflow: auto;
+}
+
+code .language {
+    display: none; /* for non-javascript display */
+}
+
+.code {
+    position: relative;
+    color: #fff;
+}
+
+table code, table .code .language {
+    border: 1px solid #c5ced5;
+    background: #fff;
+    color: #24445d;
+}
+
+.code .language {
+    display: block;
+    position: absolute;
+    right: 0;
+    font-size: 11px;
+    top: -10px;
+    background: #24445d;
+    height: 7px;
+    overflow: visible;
+    line-height: 1em;
+    padding: 3px 7px 0;
+}
+
+table .code .language {
+    border-bottom: none;
+}
+
+p code {
+    background: #f6f6f6;
+    border: 1px solid #c7c7c7;
+    color: #3d5470;
+    display: inline;
+    padding: 2px 4px 0;
+    margin: 0 1px;
+}
+
+p a {
+    color: #4585B6;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

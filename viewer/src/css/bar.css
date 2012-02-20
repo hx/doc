@@ -1,0 +1,120 @@
+.bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 37px;
+    overflow: hidden;
+}
+
+.bar .persistent {
+    background: #e5e5e5;
+    background: linear-gradient(top, #f4f3f3 0, #d8d7d7 100%);
+    border-bottom: 1px solid #bbb;
+    height: 36px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-width: 100px;
+}
+
+.bar .search {
+    position: absolute;
+    left: 6px;
+    top: 7px;
+    right: 24px;
+    bottom: 5px;
+    border: 1px solid #cfcccc;
+    border-radius: 2em;
+    background: #fff;
+    background: linear-gradient(top, #f2f2f2 0, #fff 100%);
+}
+
+.bar .search div {
+    position: absolute;
+    left: 10px;
+    right: 22px;
+    top: 0;
+    bottom: 0;
+}
+
+.bar .search input {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    line-height: 13px;
+    height: 22px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.bar .search a {
+    display: block;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    width: 18px;
+    background: #d4d4d4;
+    border-radius: 9px;
+}
+
+.bar .search a:hover {
+    background: #afafaf;
+}
+
+.bar .dropdown div,
+.bar .search a div {
+    background: url(images/bar.png);
+    position: absolute;
+}
+
+.bar .search a div {
+    width: 10px;
+    height: 10px;
+    top: 4px;
+    left: 4px;
+}
+
+.bar .blank a {
+    display: none;
+}
+
+.bar .blank input {
+    font-style: italic;
+}
+
+.bar .dropdown {
+    position: absolute;
+    right: 0;
+    width: 17px;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid rgba(255, 255, 255, .4);
+}
+
+.bar .dropdown a {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-left: 1px solid rgba(0, 0, 0, .05);
+}
+
+.bar .dropdown a:hover {
+    background: linear-gradient(top, #fcfcfc 0, #e4e4e4 100%);
+}
+
+.bar .dropdown div {
+    bottom: 5px;
+    left: 4px;
+    background-position: -10px 0;
+    width: 8px;
+    height: 12px;
+}
+

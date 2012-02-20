@@ -1,0 +1,19 @@
+.contents.searching ul.members > li {
+    display: none;
+}
+
+.contents.searching ul.members > li.hit,
+.contents.searching ul.members > li.containsHit {
+    display: block;
+}
+
+.contents.searching ul.members > li.containsHit > .orb,
+.contents.searching ul.members > li.containsHit > a {
+    opacity: .4;
+}
+
+.contents.searching ul.members > li.hit > .orb,
+.contents.searching ul.members > li.hit > a {
+    opacity: 1;
+}
+

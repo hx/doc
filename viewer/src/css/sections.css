@@ -1,0 +1,97 @@
+div.arguments,
+div.remarks,
+div.example,
+div.returns,
+div.memberSet,
+div.constructor,
+div.exceptions
+{
+    border-top: 1px solid #e3e3e3;
+    margin: 35px 15px 0;
+    padding-left: 15px;
+    padding-top: 3px;
+}
+
+h3 {
+    font-size: 17.5px;
+    position: relative;
+    top: -14px;
+    line-height: 18px;
+    left: -15px;
+    background: #fff;
+    display: inline-block;
+    z-index: 1;
+    padding-right: 10px;
+}
+
+div.methods h3, div.returns h3 {
+    color: #164f02;
+}
+
+div.arguments h3 {
+    color: #024a62;
+}
+
+div.exceptions h3 {
+    color: #9a0000;
+}
+
+div.classes h3 {
+    color: #004a95;
+}
+
+div.events h3 {
+    color: #3c0074;
+}
+
+div.namespaces h3 {
+    color: #5b5b5b;
+}
+
+div.constants h3 {
+    color: #68002a;
+}
+
+div.variables h3 {
+    color: #7b4000;
+}
+
+div.remarks h3 {
+    color: #785500;
+}
+
+div.example h3 {
+    color: #58636e;
+}
+
+.members.static h3:before {
+    content: "Static ";
+}
+
+.members.instance h3:before {
+    content: "Instance ";
+}
+
+.static.members > div.classes h3 {
+    color: #006d95;
+}
+
+.static.members > div.events h3 {
+    color: #4f3568;
+}
+
+.static.members > div.namespaces h3 {
+    color: #7d7d7d;
+}
+
+.static.members > div.constants h3 {
+    color: #723745;
+}
+
+.static.members > div.variables h3 {
+    color: #7b6200;
+}
+
+.static.members > div.methods h3 {
+    color: #4c651b;
+}

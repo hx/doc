@@ -1,0 +1,82 @@
+a ul.arguments, 
+a ul.arguments *,
+a ul.returns,
+a ul.returns *
+{
+    display: inline;
+}
+
+ul.arguments:before {
+    content: "(";
+}
+
+ul.arguments:after {
+    content: ")";
+}
+
+ul.arguments li {
+    display: inline;
+}
+
+ul.arguments > li + li:before {
+    content: ", ";
+}
+
+ul.arguments li.optional ul.types:before {
+    content: "[";
+}
+
+ul.arguments li.optional:after {
+    content: "]";
+}
+
+ul.arguments ul.types > li + li:before,
+ul.returns li + li:before {
+    content: "|";
+}
+
+/*ul.arguments ul.types:after {
+    content: " ";
+}*/
+
+ul.returns:before {
+    content: " : ";
+}
+
+tbody th a ul.arguments:before,
+tbody th a ul.arguments:after,
+.constructor h4 ul.arguments:before,
+.constructor h4 ul.arguments:after
+{
+    color: #9ea29e;
+}
+
+table th a ul.types > li + li:before,
+.constructor h4 ul.types > li + li:before
+{
+    color: #d7d7d7;
+}
+
+tbody th a .type,
+tbody th a .link,
+.constructor h4 .type,
+.constructor h4 .link
+{
+    color: #0b68a2;
+}
+
+
+tbody th a .arguments .name,
+.constructor h4 .arguments .name
+{
+    color: #744002;
+}
+
+tbody th .optional .types:before,
+tbody th .optional .types:after,
+.constructor h4 .optional .types:before,
+.constructor h4 .optional .types:after
+{
+    color: #606060;
+}
+

@@ -1,0 +1,15 @@
+.contents a.name,
+.breadcrumb a,
+code
+{
+    border-radius: 4px;
+}
+
+.code .language {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.code code {
+    border-top-right-radius: 0;
+}

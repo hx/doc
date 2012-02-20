@@ -1,0 +1,175 @@
+.overloadIndex, h5 {
+    font-size: 12px;
+    padding: 15px 15px 0;
+}
+
+h5 {
+    color: #888;
+}
+
+.overloadIndex {
+    float: right;
+    color: #808080;
+    font-weight: bold;
+}
+
+.overloadIndex span {
+    color: #282828;
+}
+
+h2 {
+    font-size: 21px;
+    line-height: 24px;
+    padding: 8px 15px 0;
+}
+
+h2 * {
+    display: inline;
+}
+
+h2 .parent:after {
+    content: ".";
+    color: #737373;
+}
+
+h2 ul.arguments:before,
+h2 ul.arguments:after {
+    color: #bfbfbf;
+}
+
+h2 ul.arguments {
+    color: #965705;
+}
+
+h2 ul.types li {
+    color: #036179;
+}
+
+h2 ul.types li:before {
+    color: #dbdbdb;
+}
+
+h2 li.optional ul.types:before,
+h2 li.optional:after {
+    color: #666;
+}
+
+h2 .base:before, h2 > .types:before {
+    content: ":";
+    color: #c6c6c6;
+}
+
+h2 .base a {
+    color: #6ca1c0;
+}
+
+h2 .base a:hover {
+    color: #1893d9;
+}
+
+h2 .types a {
+    color: #015db3;
+}
+
+h2 .types a:hover {
+    color: #0777e0;
+}
+
+.page > .summary, .overload > .summary {
+    text-shadow: 0 1px 0 #fff;
+    background: #eee;
+    font-size: 16px;
+    padding: 5px 15px 4px 35px;
+    color: #393939;
+    margin-top: 10px;
+}
+
+.overload + .overload:before {
+    display: block;
+    border-top: 1px solid #5a5757;
+    border-bottom: 1px solid #807f7f;
+    background: #8e8e8e;
+    background: linear-gradient(top, #7d7c7c 0, #a3a3a3 73%);
+    height: 7px;
+    content: " ";
+    margin: 30px 0 5px 0;
+}
+
+.page {
+    margin-bottom: 100px;
+}
+
+.returns ul.types, .returns .summary {
+    background: #f5f9f1;
+    margin: 0 -15px 0 -30px;
+    padding: 2px 30px 7px;
+    font-weight: bold;
+    color: #313131;
+}
+
+.returns ul.types {
+    color: #207606;
+    padding: 8px 30px 0;
+}
+
+.returns ul.types li + li:before {
+    content: "|";
+    color: #9c9c9c;
+    padding: 0 2px;
+}
+
+.returns a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.returns a:hover {
+    color: #2ab101;
+}
+
+
+
+
+
+
+.method h2 {
+    color: #076202;
+}
+
+.class h2 {
+    color: #023f62;
+}
+
+.namespace h2 {
+    color: #4c4c4c;
+}
+
+.event h2 {
+    color: #510262;
+}
+
+.variable h2 {
+    color: #7b3b03;
+}
+
+.constant h2 {
+    color: #7b0317;
+}
+
+
+.alias {
+    padding: 15px;
+    color: #333;
+}
+
+.alias .parent:after {
+    content: ".";
+}
+
+div.alias a {
+    color: #1a7c00;
+}
+
+div.alias a:hover {
+    color: #23a301;
+}

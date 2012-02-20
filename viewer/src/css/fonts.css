@@ -1,0 +1,35 @@
+.hxdoc,
+.breadcrumb li.home,
+table .summary
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.breadcrumb,
+.contents,
+code,
+h2,
+ul.types,
+tbody th, a.internal, .type, .base, .inheritedFrom,
+.constructor .overload > h4
+{
+    font-family: Consolas, Monaco, "Lucida Console", "Lucida Sans Typewriter", "Courier New", monospace;
+}
+
+.summary {
+    font-family: "Book Antiqua", Palatino, "Palatino Linotype", Georgia, serif;
+}
+
+h1, .version, .author, .copyright {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.author .value {
+    font-family: "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+}
+
+.search input {
+    font-family: "Segoe UI", Tahoma, "Lucida Grande", Arial, sans-serif;
+}

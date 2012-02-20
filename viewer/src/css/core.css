@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+.hxdoc {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+    list-style: none;
+}
+
+.splitter {
+    position:fixed;
+    top:0;
+    bottom: 0;
+    left: 250px;
+    width: 6px;
+    background: #000;
+    border-left: 1px solid #b9b9b9;
+    background-color: #c6d0d4;
+    background: linear-gradient(left, #dae4e8 0, #b6c0c4 100%);
+    cursor: e-resize;
+	cursor: col-resize;
+    z-index: 10;
+}
+
+.splitter:hover {
+    background: linear-gradient(left, #becdde 0, #99b1cb 100%);
+    border-color: #9aafc7;
+}
+
+.contents {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 257px;
+    overflow: auto;
+    z-index: 5;
+}
+
+.pages, .hxdoc > .home {
+    margin-left: 257px;
+}
+
+code {
+    white-space: pre;
+    display: block;
+}
+
+p code {
+    white-space: nowrap;
+    display: inline-block;
+}

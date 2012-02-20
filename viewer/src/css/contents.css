@@ -1,0 +1,174 @@
+.contents {
+    background: #f5f9fc;
+    font-size: 13px;
+    line-height: 13px;
+    white-space: nowrap;
+    padding: 3px 0;
+}
+
+.contents ul ul.members {
+    padding-left: 20px;
+}
+
+.contents ul.members > li{
+    position: relative;
+    display: block;
+}
+
+.contents .orb {
+    overflow: hidden;
+    width: 9px;
+    height: 11px;
+    display: inline-block;
+    padding: 0 3px 0 22px;
+    position: relative;
+    top: 1px;
+}
+
+.contents .orb div {
+    position: absolute;
+    height: 22px;
+}
+
+.contents .orb div,
+.contents a.arrow div {
+    width: 9px;
+    background: url(images/contents.png);
+}
+
+.contents .orb .top {
+    z-index: 1;
+    display: none;
+}
+
+.contents .private > .orb .top {
+    display: block;
+    background-position: -9px 0;
+}
+
+.contents .internal > .orb .top,
+.contents .protected > .orb .top {
+    display: block;
+    background-position: -9px 11px;
+}
+
+.contents .static > .orb .bottom {
+    top: -11px;
+}
+
+.contents a.name {
+    display: inline-block;
+    height: 15px;
+    padding: 4px 5px 1px;
+}
+
+.contents li.active > a.name,
+.contents a.name:hover {
+    border: 1px solid #dbe3e8;
+    padding: 3px 4px 0;
+}
+
+.contents a.arrow {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    z-index: 2;
+}
+
+.contents a.arrow:hover {
+    padding: 4px;
+}
+
+.contents a.arrow:hover,
+.contents li.active > a.name {
+    background: #fff;
+    border: 1px solid #dbe3e8;
+}
+
+.contents a.arrow div {
+    height: 9px;
+    margin: 1px 0 0 1px;
+}
+
+.contents li.collapsed > a.arrow div {
+    background-position: 0 11px;
+}
+
+
+
+/* slidey stuff */
+
+.contents .listContainer {
+    position: relative;
+}
+
+.contents .sliding > .listContainer > ul {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* orb colours */
+
+.contents .constant > .orb .bottom {
+    background-position: 54px 0;
+}
+
+.contents .variable > .orb .bottom {
+    background-position: 45px 0;
+}
+
+.contents .method > .orb .bottom {
+    background-position: 36px 0;
+}
+
+.contents .event > .orb .bottom {
+    background-position: 27px 0;
+}
+
+.contents .class > .orb .bottom {
+    background-position: 18px 0;
+}
+
+.contents .namespace > .orb .bottom {
+    background-position: 9px 0;
+}
+
+
+/* link colours */
+
+.contents .namespace > a {
+    color: #3d3d3d;
+}
+
+.contents .method > a {
+    color: #004804;
+}
+
+.contents .class > a {
+    color: #002646;
+}
+
+.contents .event > a {
+    color: #340362;
+}
+
+.contents .variable > a {
+    color: #683504;
+}
+
+.contents .constant > a {
+    color: #550211;
+}
+
+.contents a * {
+    color: #bbcbd6;
+}
