@@ -39,12 +39,14 @@
             <xs:enumeration value="BASH"/>
             <xs:enumeration value="C"/>
             <xs:enumeration value="CSharp"/>
+            <xs:enumeration value="HTML"/>
             <xs:enumeration value="JavaScript"/>
             <xs:enumeration value="JSON"/>
             <xs:enumeration value="Perl"/>
             <xs:enumeration value="PHP"/>
             <xs:enumeration value="Python"/>
             <xs:enumeration value="SQL"/>
+            <xs:enumeration value="XHTML"/>
             <xs:enumeration value="XML"/>
             <xs:enumeration value="VisualBasic"/>
         </xs:restriction>
